@@ -1,7 +1,7 @@
 #jQuery.EAN13
 ... is a jQuery plugin for generating EAN-13 barcodes
 
-<center><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/8/84/EAN13.svg/800px-EAN13.svg.png" style="width: 250px;" /></center>
+<center><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/8/84/EAN13.svg/250px-EAN13.svg.png"/></center>
 
 ##Usage##
 In the place where you want to have the barcode insert an `canvas`-element:
