@@ -14,6 +14,5 @@ Then let the plugin do the rest:
 
 	$("#ean").EAN13("7267328656725");
 
-##Warning!##
+##<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Zeichen_101.svg/100px-Zeichen_101.svg.png"/>Warning!##
 This plugin is currently in alpha-status. It **will** crash your browser. It is not working at the moment!
-
