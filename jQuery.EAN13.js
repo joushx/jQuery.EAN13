@@ -16,10 +16,11 @@
 	var item_width = width/95;
 	
 	// init code var for save of lines
-	var code;
+	var code = "";
 	
 	// add left border code
 	code += "101";
+
 	
 	// get chars of input number
 	var parts = number.split("");
@@ -54,7 +55,7 @@
 	
 	// add right border code
 	code += "101";
-	
+		
 	// check if canvas-element is available
 	if(this[0].getContext){
 		
