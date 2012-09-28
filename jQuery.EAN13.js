@@ -18,8 +18,6 @@
 		// calculate width of every element
 		var item_width = width/95;
 
-		delete(width);
-
 		// init code var for save of lines
 		var code = "";
 
@@ -43,8 +41,6 @@
 				code += "01010";
 			}
 		}
-
-		delete(parts);
 
 		// add right border code
 		code += "101";
