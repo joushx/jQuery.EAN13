@@ -1,3 +1,10 @@
+/* 
+* Copyright (c) 2012 Johannes Mittendorfer (http://jmittendorfer.hostingsociety.com)
+* Licensed under the MIT License (LICENSE.txt).
+*
+* Version: 0.0.3
+*/
+
 (function( $ ) {
 	$.fn.EAN13 = function(number) {
 
