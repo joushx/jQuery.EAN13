@@ -40,9 +40,7 @@
 				code += " " + y[parts[i]];
 			}
 		}
-		
-		alert(code);
-		
+
 		// loop through right groups
 		for(var i = 6; i < 12; i++){
 			code += z[parts[i]];
@@ -62,15 +60,16 @@
 
 			// get chars of code for drawing every line
 			var lines = code.split("");
-			
+
+			// add left border
 			context.fillRect(left, 0, item_width, canvas.height);
 			left = left + item_width*2;
 			context.fillRect(left, 0, item_width, canvas.height);
 			left = left + item_width;
-			
+
 			// loop through left lines
 			for(var i = 0; i < 42; i++){
-			
+
 				// in char in 1: draw a line
 				if(lines[i] == "1"){
 					// draw
@@ -80,15 +79,17 @@
 				// alter offset
 				left = left + item_width;
 			}
+
+			// add center
 			left = left + item_width;
 			context.fillRect(left, 0, item_width, canvas.height);
 			left = left + item_width*2;
 			context.fillRect(left, 0, item_width, canvas.height);
 			left = left + item_width*2;
-			
+
 			// loop through right lines
 			for(var i = 42; i < 84; i++){
-			
+
 				// in char in 1: draw a line
 				if(lines[i] == "1"){
 					// draw
@@ -98,7 +99,8 @@
 				// alter offset
 				left = left + item_width;
 			}
-			
+
+			// add right border
 			context.fillRect(left, 0, item_width, canvas.height);
 			left = left + item_width*2;
 			context.fillRect(left, 0, item_width, canvas.height);
