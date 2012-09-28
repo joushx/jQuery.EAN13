@@ -5,7 +5,7 @@
 * Version: 0.0.3
 */
 
-(function( $ ) {
+(function($) {
 	$.fn.EAN13 = function(number) {
 
 		// EAN 13 code tables
@@ -20,7 +20,7 @@
 		var width = canvas.width;
 
 		// get width of barcode element
-		var height = canvas.height;
+		var height = canvas.height-(0.1*canvas.height);
 
 		// calculate width of every element
 		var item_width = width/95;
@@ -28,29 +28,25 @@
 		// init code var for save of lines
 		var code = "";
 
-		// add left border code
-		code += "101";
-
 		// get chars of input number
 		var parts = number.split("");
 
-		// loop through chars of input
-		for(var i = 1; i < 13; i++){
-			if((i%2) == 1){
-				code += x[parts[i]];
+		// loop through left groups
+		for(var i = 0; i < 6; i++){
+			if((i%2) == 0){
+				code += " " + x[parts[i]];
 			}
 			else{
-				code += y[parts[i]];
-			}
-
-			// if i=6 add central code
-			if(i = 6){
-				code += "01010";
+				code += " " + y[parts[i]];
 			}
 		}
-
-		// add right border code
-		code += "101";
+		
+		alert(code);
+		
+		// loop through right groups
+		for(var i = 6; i < 12; i++){
+			code += z[parts[i]];
+		}
 
 		// check if canvas-element is available
 		if(canvas.getContext){
@@ -66,23 +62,49 @@
 
 			// get chars of code for drawing every line
 			var lines = code.split("");
-
-			// loop through lines
-			for(var i = 0; i < code.lenght; i++){
-
+			
+			context.fillRect(left, 0, item_width, canvas.height);
+			left = left + item_width*2;
+			context.fillRect(left, 0, item_width, canvas.height);
+			left = left + item_width;
+			
+			// loop through left lines
+			for(var i = 0; i < 42; i++){
+			
 				// in char in 1: draw a line
 				if(lines[i] == "1"){
-
 					// draw
 					context.fillRect(left, 0, item_width, height);
 				}
 
 				// alter offset
-				left = left + item_width;	
+				left = left + item_width;
 			}
+			left = left + item_width;
+			context.fillRect(left, 0, item_width, canvas.height);
+			left = left + item_width*2;
+			context.fillRect(left, 0, item_width, canvas.height);
+			left = left + item_width*2;
+			
+			// loop through right lines
+			for(var i = 42; i < 84; i++){
+			
+				// in char in 1: draw a line
+				if(lines[i] == "1"){
+					// draw
+					context.fillRect(left, 0, item_width, height);
+				}
+
+				// alter offset
+				left = left + item_width;
+			}
+			
+			context.fillRect(left, 0, item_width, canvas.height);
+			left = left + item_width*2;
+			context.fillRect(left, 0, item_width, canvas.height);
 		}
 		else{
-			alert("EAN13: error!");
+			alert("jQuery.EAN13: error!");
 		}
 	};
 })( jQuery );
