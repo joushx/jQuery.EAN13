@@ -21,6 +21,3 @@ Let the plugin do the rest:
 ```
 $("#ean").EAN13("7267328656725");
 ```
-
-##Warning!##
-This plugin is currently in pre-alpha-status. The barcode is currently wrong.
