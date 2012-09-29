@@ -4,8 +4,18 @@ jQuery is a jQuery plugin for in-place generation of EAN-13 barcodes
 <img src="https://raw.github.com/joushx/jQuery.EAN13/master/barcode.png"/>
 
 ##Usage##
+
+###Include Plugin###
+Insert the following code into the `head`-section of you page:
+
+```
+<script type="text/javascript" src="jQuery.EAN13.min.js"></script>
+```
+
+Make sure to include this AFTER the jQuery-library.
+
 ###Insert Canvas###
-In the area where you want to insert the barcode insert this code:
+At the place where you want to insert the barcode insert this code:
 
 ```
 <canvas id="ean" width="200" height="100">
@@ -13,11 +23,24 @@ In the area where you want to insert the barcode insert this code:
 </canvas>
 ```
 
-You may change th domensions of the element. The barcode will autmatically resized.
+You may change the dimensions of the element. The barcode will automatically be resized.
 
 ###Generate Barcode###
-Let the plugin do the rest:
+Barcodes can printed with or without the number unter the code:
+
+####With number####
+For printing the code of the provided number with the number under it, just use the following code:
 
 ```
-$("#ean").EAN13("7267328656725");
+$("#ean").EAN13("9002236311036");
 ```
+
+####Without number####
+For only printing the barcode use the code below:
+
+```
+$("#ean").EAN13("9002236311036", false);
+```
+
+##Author##
+Johannes Mittendorfer (http://jmittendorfer.hostingsociety.com)
