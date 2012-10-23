@@ -39,7 +39,7 @@ $("#ean").EAN13("9002236311036");
 For only printing the barcode use the code below:
 
 ```
-$("#ean").EAN13("9002236311036", false);
+$("#ean").EAN13("9002236311036", {"print_number":false});
 ```
 
 ##Author##
