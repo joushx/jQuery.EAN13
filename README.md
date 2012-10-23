@@ -42,5 +42,18 @@ For only printing the barcode use the code below:
 $("#ean").EAN13("9002236311036", {"print_number":false});
 ```
 
+####Validate barcode####
+For validating the barcode, use the following code:
+
+```javascript
+$("#ean").EAN13("9002236311036", {"validate":true});
+```
+
+Optionally you can specify a custom error message when validating failes:
+
+```javascript
+$("#ean").EAN13("9002236311036", {"validate":true, "validate_message":"Uh, oh! Barcode seems wrong!"});
+```
+
 ##Author##
 Johannes Mittendorfer (http://jmittendorfer.hostingsociety.com)
