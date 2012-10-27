@@ -25,34 +25,36 @@ At the place where you want to insert the barcode insert this code:
 
 You may change the dimensions of the element. The barcode will automatically be resized.
 
-###Generate Barcode###
-Barcodes can printed with or without the number unter the code:
-
-####With number####
+###With number###
 For printing the code of the provided number with the number under it, just use the following code:
 
 ```javascript
 $("#ean").EAN13("9002236311036");
 ```
 
-####Without number####
+###Without number###
 For only printing the barcode use the code below:
 
 ```javascript
-$("#ean").EAN13("9002236311036", {"print_number":false});
+$("#ean").EAN13("9002236311036", {print_number: false});
 ```
 
-####Validate barcode####
-For validating the barcode, use the following code:
+###onValid###
+When the code is valid, the `onValid` callback gets executed.
 
 ```javascript
-$("#ean").EAN13("9002236311036", {"validate":true});
+$("#ean").EAN13("9002236311036", {onValid: function(){
+	// do
+});
 ```
 
-Optionally you can specify a custom error message when validating failes:
+###onInvalid###
+When the code is valid, the `onInvalid` callback gets executed.
 
 ```javascript
-$("#ean").EAN13("9002236311036", {"validate":true, "validate_message":"Uh, oh! Barcode seems wrong!"});
+$("#ean").EAN13("9002236311036", {onInvalid: function(){
+	// do
+});
 ```
 
 ##Author##
