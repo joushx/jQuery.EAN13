@@ -43,18 +43,22 @@ $("#ean").EAN13("9002236311036", {print_number: false});
 When the code is valid, the `onValid` callback gets executed.
 
 ```javascript
-$("#ean").EAN13("9002236311036", {onValid: function(){
-	// do
-});
+$("#ean").EAN13("9002236311036", {
+	onValid: function(){
+		// do
+	}
+);
 ```
 
 ###onInvalid###
 When the code is invalid, the `onInvalid` callback gets executed.
 
 ```javascript
-$("#ean").EAN13("9002236311036", {onInvalid: function(){
-	// do
-});
+$("#ean").EAN13("9002236311036", {
+	onInvalid: function(){
+		// do
+	}
+);
 ```
 
 ##Author##
