@@ -36,7 +36,10 @@ $("#ean").EAN13("9002236311036");
 For only printing the barcode use the code below:
 
 ```javascript
-$("#ean").EAN13("9002236311036", {print_number: false});
+$("#ean").EAN13("9002236311036", {
+		'print_number': false
+	}
+);
 ```
 
 ###onValid###
@@ -44,7 +47,7 @@ When the code is valid, the `onValid` callback gets executed.
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
-	onValid: function(){
+	'onValid': function(){
 		// do
 	}
 );
@@ -55,7 +58,7 @@ When the code is invalid, the `onInvalid` callback gets executed.
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
-	onInvalid: function(){
+	'onInvalid': function(){
 		// do
 	}
 );
