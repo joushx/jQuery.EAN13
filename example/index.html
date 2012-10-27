@@ -8,11 +8,11 @@
 	<canvas id="ean" width="400" height="200"></canvas>
 	<script type="text/javascript">
 		$("#ean").EAN13("9002236311036",{
-			print_number: false,
-			onValid: function(){
+			'print_number': false,
+			'onValid': function(){
 				alert("OK!");
 			},
-			onInvalid: function(){
+			'onInvalid': function(){
 				alert("NOT OK!");
 			}
 		});
