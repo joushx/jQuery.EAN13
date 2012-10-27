@@ -47,8 +47,9 @@ When the code is valid, the `onValid` callback gets executed.
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
-	'onValid': function(){
-		// do
+		'onValid': function(){
+			// do
+		}
 	}
 );
 ```
@@ -58,8 +59,9 @@ When the code is invalid, the `onInvalid` callback gets executed.
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
-	'onInvalid': function(){
-		// do
+		'onInvalid': function(){
+			// do
+		}
 	}
 );
 ```
