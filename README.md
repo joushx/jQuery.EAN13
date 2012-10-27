@@ -49,7 +49,7 @@ $("#ean").EAN13("9002236311036", {onValid: function(){
 ```
 
 ###onInvalid###
-When the code is valid, the `onInvalid` callback gets executed.
+When the code is invalid, the `onInvalid` callback gets executed.
 
 ```javascript
 $("#ean").EAN13("9002236311036", {onInvalid: function(){
