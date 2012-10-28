@@ -25,7 +25,7 @@ At the place where you want to insert the barcode insert this code:
 
 You may change the dimensions of the element. The barcode will automatically be resized.
 
-###With number###
+###Print barcode###
 For printing the code of the provided number with the number under it, just use the following code:
 
 ```javascript
@@ -37,9 +37,23 @@ For only printing the barcode use the code below:
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
+<<<<<<< HEAD
 		'print_number': false
 	}
 );
+=======
+	number: false
+});
+```
+
+###Prefix###
+Set the `prefix`-option to false to not print the country prefix:
+
+```javascript
+$("#ean").EAN13("9002236311036", {
+	prefix: false
+});
+>>>>>>> changed readme for prefix
 ```
 
 ###onValid###
@@ -47,11 +61,18 @@ When the code is valid, the `onValid` callback gets executed.
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
+<<<<<<< HEAD
 		'onValid': function(){
 			// do
 		}
 	}
 );
+=======
+	onValid: function(){
+		// do
+	}
+});
+>>>>>>> changed readme for prefix
 ```
 
 ###onInvalid###
@@ -59,11 +80,18 @@ When the code is invalid, the `onInvalid` callback gets executed.
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
+<<<<<<< HEAD
 		'onInvalid': function(){
 			// do
 		}
 	}
 );
+=======
+	onInvalid: function(){
+		// do
+	}
+});
+>>>>>>> changed readme for prefix
 ```
 
 ##Author##
