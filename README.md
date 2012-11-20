@@ -37,7 +37,7 @@ For only printing the barcode use the code below:
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
-	print_number: false
+	number: false
 });
 ```
 
