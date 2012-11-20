@@ -72,5 +72,16 @@ $("#ean").EAN13("9002236311036", {
 });
 ```
 
+###onError###
+When the plugin (canvas-element) is not supported by the browser `onError` gets called.
+
+```javascript
+$("#ean").EAN13("9002236311036", {
+	onError: function(){
+		// do
+	}
+});
+```
+
 ##Author##
 Johannes Mittendorfer (http://jmittendorfer.hostingsociety.com)
