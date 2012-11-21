@@ -1,5 +1,5 @@
 #jQuery.EAN13
-jQuery.EAN13 is a jQuery plugin for in-place generation of EAN-13 barcodes.
+jQuery.EAN13 is a light (~2kb) jQuery plugin for in-place generation of EAN-13 barcodes.
 
 <img src="https://raw.github.com/joushx/jQuery.EAN13/master/barcode.png"/>
 
