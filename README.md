@@ -32,6 +32,8 @@ For printing the code of the provided number with the number under it, just use 
 $("#ean").EAN13("9002236311036");
 ```
 
+##Options##
+
 ###Without number###
 For only printing the barcode use the code below:
 
@@ -68,6 +70,8 @@ $("#ean").EAN13("9002236311036", {
 	color: "rgb(255,0,0)"
 });
 ```
+
+##Callbacks##
 
 ###onValid###
 When the code is valid, the `onValid` callback gets executed.
