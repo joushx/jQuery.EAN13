@@ -50,6 +50,25 @@ $("#ean").EAN13("9002236311036", {
 });
 ```
 
+###Color###
+Set the `color`-option to a color to print the barcode with it.
+
+####Hex-value####
+
+```javascript
+$("#ean").EAN13("9002236311036", {
+	color: "#f00"
+});
+```
+
+####RGB-value####
+
+```javascript
+$("#ean").EAN13("9002236311036", {
+	color: "rgb(255,0,0)"
+});
+```
+
 ###onValid###
 When the code is valid, the `onValid` callback gets executed.
 
