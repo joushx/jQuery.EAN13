@@ -6,7 +6,7 @@ jQuery.EAN13 is a light (~2kb) jQuery plugin for in-place generation of EAN-13 b
 ##Usage##
 
 ###Include Plugin###
-Insert the following code into the `head`-section of you page:
+Insert the following code into the `head` section of you page:
 
 ```html
 <script type="text/javascript" src="jQuery.EAN13.min.js"></script>
@@ -44,7 +44,7 @@ $("#ean").EAN13("9002236311036", {
 ```
 
 ###Prefix###
-Set the `prefix`-option to false to not print the country prefix:
+Set the `prefix` option to false to not print the country prefix:
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
@@ -53,7 +53,7 @@ $("#ean").EAN13("9002236311036", {
 ```
 
 ###Color###
-Set the `color`-option to a color to print the barcode with it.
+Set the `color` option to a color to print the barcode with it.
 
 ####Hex-value####
 
@@ -68,6 +68,14 @@ $("#ean").EAN13("9002236311036", {
 ```javascript
 $("#ean").EAN13("9002236311036", {
 	color: "rgb(255,0,0)"
+});
+```
+
+####RGBA-value####
+
+```javascript
+$("#ean").EAN13("9002236311036", {
+	color: "rgb(255,0,0,0.2)"
 });
 ```
 
