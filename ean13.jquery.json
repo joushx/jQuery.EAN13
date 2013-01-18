@@ -11,6 +11,12 @@
 		"name": "Johannes Mittendorfer",
 		"url": "http://jmittendorfer.hostingsociety.com"
 	},
+	"maintainers": [
+        {
+            "name": "Johannes Mittendorfer",
+			"url": "http://jmittendorfer.hostingsociety.com"
+        }
+    ],
 	"licenses": [
 		{
 			"type": "MIT",
