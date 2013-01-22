@@ -23,7 +23,7 @@
 			"url": "https://raw.github.com/joushx/jQuery.EAN13/master/LICENSE.txt"
 		}
 	],
-	"demo": "http://demo.jmittendorfer.hostingsociety.com/jquery-ean13"
+	"demo": "http://demo.jmittendorfer.hostingsociety.com/jquery-ean13",
 	"bugs": "https://github.com/joushx/jQuery.EAN13/issues",
 	"homepage": "https://github.com/joushx/jQuery.EAN13",
 	"docs": "https://github.com/joushx/jQuery.EAN13",
