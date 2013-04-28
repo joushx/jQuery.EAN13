@@ -6,17 +6,17 @@
 		"barcode",
 		"ean13"
 	],
-	"version": "1.1",
+	"version": "1.1.0",
 	"author": {
 		"name": "Johannes Mittendorfer",
 		"url": "http://jmittendorfer.hostingsociety.com"
 	},
 	"maintainers": [
-        {
-            "name": "Johannes Mittendorfer",
-			"url": "http://jmittendorfer.hostingsociety.com"
-        }
-    ],
+	        {
+	            "name": "Johannes Mittendorfer",
+				"url": "http://jmittendorfer.hostingsociety.com"
+	        }
+    	],
 	"licenses": [
 		{
 			"type": "MIT",
