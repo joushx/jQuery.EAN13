@@ -9,12 +9,12 @@
 	"version": "1.1.2",
 	"author": {
 		"name": "Johannes Mittendorfer",
-		"url": "http://jmittendorfer.hostingsociety.com"
+		"url": "http://johannes-mittendorfer.com"
 	},
 	"maintainers": [
 	        {
-	            "name": "Johannes Mittendorfer",
-				"url": "http://jmittendorfer.hostingsociety.com"
+	           	"name": "Johannes Mittendorfer",
+			"url": "http://johannes-mittendorfer.com"
 	        }
     	],
 	"licenses": [
@@ -23,7 +23,7 @@
 			"url": "https://raw.github.com/joushx/jQuery.EAN13/master/LICENSE.txt"
 		}
 	],
-	"demo": "http://demo.jmittendorfer.hostingsociety.com/jquery-ean13",
+	"demo": "http://demo.johannes-mittendorfer.com/jquery-ean13",
 	"bugs": "https://github.com/joushx/jQuery.EAN13/issues",
 	"homepage": "https://github.com/joushx/jQuery.EAN13",
 	"docs": "https://github.com/joushx/jQuery.EAN13",
