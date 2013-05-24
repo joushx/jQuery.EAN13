@@ -115,4 +115,4 @@ $("#ean").EAN13("9002236311036", {
 ```
 
 ##Author##
-Johannes Mittendorfer (http://jmittendorfer.hostingsociety.com)
+Johannes Mittendorfer (http://johannes-mittendorfer.com)
