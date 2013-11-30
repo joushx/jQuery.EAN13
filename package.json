@@ -1,0 +1,33 @@
+{
+  "name": "jquery-ean13",
+  "version": "1.1.2",
+  "description": "jQuery plugin for generating EAN13-barcodes",
+  "main": "Gruntfile.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "grunt": "~0.4.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-uglify": "~0.2.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joushx/jQuery.EAN13.git"
+  },
+  "keywords": [
+    "ean13",
+    "barcode",
+    "jquery"
+  ],
+  "author": "Johannes Mittendorfer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joushx/jQuery.EAN13/issues"
+  }
+}
