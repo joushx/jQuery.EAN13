@@ -1,6 +1,7 @@
-"use strict";
-
 (function($) {
+
+	"use strict";
+
 	$.fn.EAN13 = function(number, options) {
 	
 		// layout vars
@@ -31,7 +32,16 @@
 		return this.each(function() {
 		
 			// validate number
-			validate(number) ? settings.onValid.call(this) : settings.onInvalid.call(this);
+			if(validate(number)){
+				
+				// call valid callback				
+				settings.onValid.call(this);
+			}
+			else{
+
+				// call invalid callback
+				settings.onInvalid.call(this);
+			}
 		
 			// EAN 13 code tables
 			var x = ["0001101", "0011001", "0010011", "0111101", "0100011", "0110001", "0101111", "0111011", "0110111", "0001011"];
@@ -44,14 +54,18 @@
 			// get width of barcode element
 			var width = settings.prefix ? canvas.width*0.8 : canvas.width;
 
+			// init variables
+			var border_height;
+			var height;
+
 			// get width of barcode element
 			if(settings.number){
-				var border_height = layout.border_line_height_number*canvas.height;
-				var height = layout.line_height*border_height;
+				border_height = layout.border_line_height_number*canvas.height;
+				height = layout.line_height*border_height;
 			}
 			else{
-				var border_height = layout.border_line_height*canvas.height;
-				var height = layout.line_height*border_height;
+				border_height = layout.border_line_height*canvas.height;
+				height = layout.line_height*border_height;
 			}
 
 			// calculate width of every element
@@ -61,7 +75,7 @@
 			var code = "";
 
 			// get country encoding
-			var c_encoding = countries[parseInt(number.substr(0,1))].split("");
+			var c_encoding = countries[parseInt(number.substr(0,1),10)].split("");
 
 			// get prefix
 			var prefix = number.substr(0,1);
@@ -74,7 +88,7 @@
 
 			// loop through left groups
 			for(var i = 0; i < 6; i++){
-				if(c_encoding[i] == "x"){
+				if(c_encoding[i] === "x"){
 					code += x[parts[i]];
 				}
 				else{
@@ -83,7 +97,7 @@
 			}
 
 			// loop through right groups
-			for(var i = 6; i < 12; i++){
+			for(i = 6; i < 12; i++){
 				code += z[parts[i]];
 			}
 
@@ -109,10 +123,10 @@
 				left = left + item_width;
 
 				// loop through left lines
-				for(var i = 0; i < 42; i++){
+				for(i = 0; i < 42; i++){
 
 					// if char in 1: draw a line
-					if(lines[i] == "1"){
+					if(lines[i] === "1"){
 						
 						// draw
 						context.fillRect(left, 0, item_width, height);
@@ -162,7 +176,7 @@
 					var offset = item_width*3 + (settings.prefix ? layout.prefix_offset*canvas.width : 0);
 
 					// loop though left chars
-					$.each(number.substr(0,6).split(""), function(k,v){
+					$.each(number.substr(0,6).split(""), function(v){
 
 						// print text
 						context.fillText(v, offset, border_height*layout.font_y);
@@ -175,7 +189,7 @@
 					offset = 49*item_width + (settings.prefix ? layout.prefix_offset*canvas.width : 0);
 					
 					// loop though right chars
-					$.each(number.substr(6).split(""), function(k,v){
+					$.each(number.substr(6).split(""), function(v){
 
 						// print text
 						context.fillText(v, offset, border_height*layout.font_y);
@@ -205,7 +219,7 @@
 				
 				// loop through chars
 				$.each(chars, function(k,v){
-					counter += (k%2==1) ? parseInt(v,10) : 3*parseInt(v,10);			
+					counter += (k%2===1) ? parseInt(v,10) : 3*parseInt(v,10);			
 				});
 				
 				// check if result % 10 is 0
