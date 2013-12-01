@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-  // Project configuration.
+  // Project configuration
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
@@ -10,6 +10,23 @@ module.exports = function(grunt) {
       build: {
         src: 'src/<%= pkg.name %>.js',
         dest: 'dist/<%= pkg.name %>.min.js'
+      }
+    },
+    coffeelint: {
+      app: ['src/<%= pkg.name %>.coffee'],
+      options: {
+        'max_line_length': {
+          'level': 'ignore'
+        },
+        'arrow_spacing':{
+          'level': 'warning'
+        },
+        'line_endings':{
+          'level': 'warning'
+        },
+        'no_empty_param_list':{
+          'level': 'warning'
+        }
       }
     },
     jshint: {
@@ -39,9 +56,16 @@ module.exports = function(grunt) {
                 },
                 homepage: "https://github.com/joushx/jQuery.EAN13",
                 demo: "http://demo.johannes-mittendorfer.com/jquery-ean13",
-		docs: "https://github.com/joushx/jQuery.EAN13/blob/master/README.md"
+		            docs: "https://github.com/joushx/jQuery.EAN13/blob/master/README.md"
             }
         }
+    },
+    coffee:{
+      compile: {
+        files: {
+          'dist/<%= pkg.name %>.js': 'src/<%= pkg.name %>.coffee'
+        }
+      }
     }
   });
 
@@ -50,8 +74,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-jquerymanifest');
+  grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-coffeelint');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint','qunit','uglify','jquerymanifest']);
+  grunt.registerTask('default', ['coffeelint','coffee','jshint','qunit','uglify','jquerymanifest']);
 
 };
