@@ -218,9 +218,21 @@
 				var counter = 0;
 				
 				// loop through chars
-				$.each(chars, function(k,v){
-					counter += (k%2===1) ? parseInt(v,10) : 3*parseInt(v,10);			
+				$.each(chars, function(key,value){
+
+					// check if odd
+					if(key%2===0){
+						
+						// count up counter
+						counter += parseInt(value,10);
+					}
+					else{
+						
+						// count up counter
+						counter += 3*parseInt(value,10);
+					}		
 				});
+
 				
 				// check if result % 10 is 0
 				if((counter % 10) === 0){
