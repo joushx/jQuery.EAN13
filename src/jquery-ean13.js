@@ -175,11 +175,14 @@
 					// init offset
 					var offset = item_width*3 + (settings.prefix ? layout.prefix_offset*canvas.width : 0);
 
+					// split number
+					var chars = number.substr(1,6).split("");
+
 					// loop though left chars
-					$.each(number.substr(0,6).split(""), function(v){
+					$.each(chars, function(key,value){
 
 						// print text
-						context.fillText(v, offset, border_height*layout.font_y);
+						context.fillText(value, offset, border_height*layout.font_y);
 						
 						// alter offset
 						offset += layout.font_stretch*width;
@@ -189,10 +192,10 @@
 					offset = 49*item_width + (settings.prefix ? layout.prefix_offset*canvas.width : 0);
 					
 					// loop though right chars
-					$.each(number.substr(6).split(""), function(v){
+					$.each(number.substr(6).split(""), function(key,value){
 
 						// print text
-						context.fillText(v, offset, border_height*layout.font_y);
+						context.fillText(value, offset, border_height*layout.font_y);
 						
 						// alter offset
 						offset += layout.font_stretch*width;
