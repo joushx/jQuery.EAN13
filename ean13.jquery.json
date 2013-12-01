@@ -1,33 +1,30 @@
 {
-	"name": "ean13",
-	"title": "jQuery EAN 13",
-	"description": "jQuery plugin for generating EAN13-barcodes",
-	"keywords": [
-		"barcode",
-		"ean13"
-	],
-	"version": "1.1.5",
-	"author": {
-		"name": "Johannes Mittendorfer",
-		"url": "http://johannes-mittendorfer.com"
-	},
-	"maintainers": [
-	        {
-	           	"name": "Johannes Mittendorfer",
-			"url": "http://johannes-mittendorfer.com"
-	        }
-    	],
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "https://raw.github.com/joushx/jQuery.EAN13/master/LICENSE.txt"
-		}
-	],
-	"demo": "http://demo.johannes-mittendorfer.com/jquery-ean13",
-	"bugs": "https://github.com/joushx/jQuery.EAN13/issues",
-	"homepage": "https://github.com/joushx/jQuery.EAN13",
-	"docs": "https://github.com/joushx/jQuery.EAN13",
-	"dependencies": {
-		"jquery": ">=1.5"
-	}
+  "name": "ean13",
+  "version": "1.1.5",
+  "title": "jQuery EAN 13",
+  "author": {
+    "name": "Johannes Mittendorfer",
+    "url": "http://johannes-mittendorfer.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "homepage": "https://github.com/joushx/jQuery.EAN13",
+  "description": "jQuery plugin for generating EAN13-barcodes",
+  "keywords": [
+    "ean13",
+    "barcode",
+    "jquery"
+  ],
+  "docs": "https://github.com/joushx/jQuery.EAN13/blob/master/README.md",
+  "demo": "http://demo.johannes-mittendorfer.com/jquery-ean13",
+  "bugs": {
+    "url": "https://github.com/joushx/jQuery.EAN13/issues"
+  }
 }

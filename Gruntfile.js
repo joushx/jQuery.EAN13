@@ -26,6 +26,22 @@ module.exports = function(grunt) {
     },
     qunit: {
       all: ['tests/**/*.html']
+    },
+    jquerymanifest: {
+        options: {
+            source: grunt.file.readJSON('package.json'),
+            overrides: {
+                name: "ean13",
+                title: "jQuery EAN 13",
+                author: {
+                    name: "Johannes Mittendorfer",
+                    url: "http://johannes-mittendorfer.com"
+                },
+                homepage: "https://github.com/joushx/jQuery.EAN13",
+                demo: "http://demo.johannes-mittendorfer.com/jquery-ean13",
+		docs: "https://github.com/joushx/jQuery.EAN13/blob/master/README.md"
+            }
+        }
     }
   });
 
@@ -33,8 +49,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-jquerymanifest');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint','qunit','uglify']);
+  grunt.registerTask('default', ['jshint','qunit','uglify','jquerymanifest']);
 
 };
