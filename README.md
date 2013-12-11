@@ -9,7 +9,7 @@ jQuery.EAN13 is a lightweight (~2kb) jQuery plugin for in-place generation of EA
 Insert the following code into the `head` section of you page:
 
 ```html
-<script type="text/javascript" src="jQuery.EAN13.min.js"></script>
+<script type="text/javascript" src="jquery-ean13.min.js"></script>
 ```
 
 Make sure to include this AFTER the jQuery-library.
