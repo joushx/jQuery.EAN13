@@ -13,9 +13,9 @@
     }
   ],
   "dependencies": {
+    "grunt": "~0.4.2",
     "jquery": "*"
   },
-  "homepage": "https://github.com/joushx/jQuery.EAN13",
   "description": "jQuery plugin for generating EAN13-barcodes",
   "keywords": [
     "ean13",
@@ -26,5 +26,6 @@
   "demo": "http://demo.johannes-mittendorfer.com/jquery-ean13",
   "bugs": {
     "url": "https://github.com/joushx/jQuery.EAN13/issues"
-  }
+  },
+  "homepage": "https://github.com/joushx/jQuery.EAN13"
 }

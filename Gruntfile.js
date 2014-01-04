@@ -66,6 +66,14 @@ module.exports = function(grunt) {
           'dist/<%= pkg.name %>.js': 'src/<%= pkg.name %>.coffee'
         }
       }
+    },
+    docco: {
+      debug: {
+        src: ['src/**/*'],
+        options: {
+          output: 'docs/'
+        }
+      }
     }
   });
 
@@ -76,8 +84,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jquerymanifest');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-coffeelint');
+  grunt.loadNpmTasks('grunt-docco');
 
   // Default task(s).
-  grunt.registerTask('default', ['coffeelint','coffee','jshint','qunit','uglify','jquerymanifest']);
+  grunt.registerTask('default', ['coffeelint','coffee','jshint','qunit','uglify','jquerymanifest','docco']);
 
 };
