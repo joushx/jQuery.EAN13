@@ -1,6 +1,6 @@
 {
   "name": "jquery-ean13",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "jQuery plugin for generating EAN13-barcodes",
   "main": "Gruntfile.js",
   "directories": {
