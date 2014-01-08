@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         banner: '/*\n* Copyright (c) <%= grunt.template.today("yyyy") %> Johannes Mittendorfer (http://johannes-mittendorfer.com)\n* Licensed under the MIT License (LICENSE.txt).\n*\n* Version <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n\n'
       },
       build: {
-        src: 'src/<%= pkg.name %>.js',
+        src: 'dist/<%= pkg.name %>.js',
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
@@ -87,6 +87,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-docco');
 
   // Default task(s).
-  grunt.registerTask('default', ['coffeelint','coffee','jshint','qunit','uglify','jquerymanifest','docco']);
+  grunt.registerTask('default', ['coffeelint','coffee','jshint','uglify','qunit','jquerymanifest','docco']);
+  grunt.registerTask('test', ['coffeelint','coffee','jshint','uglify','qunit']);
 
 };
