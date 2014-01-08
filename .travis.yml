@@ -6,4 +6,4 @@ before_script:
 branches:
   except:
     - gh-pages
-script: grunt test --verbose --force
+script: grunt
