@@ -9,8 +9,7 @@
       color: "#000",
       onValid: function() {},
       onInvalid: function() {},
-      onError: function() {},
-      onEncoding: function() {}
+      onError: function() {}
     };
     Plugin = (function() {
       function Plugin(element, number, options) {
@@ -24,7 +23,11 @@
 
       Plugin.prototype.init = function() {
         var code;
-        this.settings.onInvalid.call();
+        if (this.validate()) {
+          this.settings.onValid.call();
+        } else {
+          this.settings.onInValid.call();
+        }
         code = this.getCode();
         return this.draw(code);
       };
@@ -127,6 +130,8 @@
               return offset += layout.font_stretch * width;
             });
           }
+        } else {
+          return this.settings.onError.call();
         }
       };
 
@@ -147,17 +152,16 @@
         } else {
           result = false;
         }
-        alert(result);
         return result;
       };
 
       return Plugin;
 
     })();
-    return $.fn[pluginName] = function(options) {
+    return $.fn[pluginName] = function(number, options) {
       return this.each(function() {
         if (!$.data(this, "plugin_" + pluginName)) {
-          return $.data(this, "plugin_" + pluginName, new Plugin(this, options));
+          return $.data(this, "plugin_" + pluginName, new Plugin(this, number, options));
         }
       });
     };

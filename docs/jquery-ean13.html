@@ -111,7 +111,6 @@
             <div class="content"><div class='highlight'><pre>    <span class="attribute">onValid</span>:<span class="function"> -&gt;</span>
     <span class="attribute">onInvalid</span>:<span class="function"> -&gt;</span>
     <span class="attribute">onError</span>:<span class="function"> -&gt;</span>
-    <span class="attribute">onEncoding</span>:<span class="function"> -&gt;</span>
  
   <span class="class"><span class="keyword">class</span> <span class="title">Plugin</span></span>
     <span class="attribute">constructor</span>: <span class="function"><span class="params">(<span class="property">@element</span>, <span class="property">@number</span>, options)</span> -&gt;</span></pre></div></div>
@@ -176,9 +175,7 @@
             
             <div class="content"><div class='highlight'><pre>      <span class="property">@init</span>()
 
-    <span class="attribute">init</span>: <span class="function"><span class="params">()</span> -&gt;</span>
-
-      <span class="property">@settings</span>.onInvalid.call()</pre></div></div>
+    <span class="attribute">init</span>:<span class="function"> -&gt;</span></pre></div></div>
             
         </li>
         
@@ -189,9 +186,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>@settings.onValid.call()</p>
+              <p>check if code is valid</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>      <span class="keyword">if</span> <span class="property">@validate</span>()
+        <span class="property">@settings</span>.onValid.call()
+      <span class="keyword">else</span>
+        <span class="property">@settings</span>.onInValid.call()</pre></div></div>
             
         </li>
         
@@ -862,8 +864,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>            offset += layout.font_stretch * width
-
-    <span class="attribute">validate</span>:<span class="function"> -&gt;</span></pre></div></div>
+      <span class="keyword">else</span></pre></div></div>
             
         </li>
         
@@ -874,11 +875,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
-              <p>init result var</p>
+              <p>call error callback</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      result = <span class="literal">null</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="property">@settings</span>.onError.call()
+
+    <span class="attribute">validate</span>:<span class="function"> -&gt;</span></pre></div></div>
             
         </li>
         
@@ -889,11 +892,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
-              <p>split and reverse number</p>
+              <p>init result var</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      chars = <span class="property">@number</span>.split(<span class="string">""</span>)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      result = <span class="literal">null</span></pre></div></div>
             
         </li>
         
@@ -904,11 +907,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
-              <p>init counter</p>
+              <p>split and reverse number</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      counter = <span class="number">0</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      chars = <span class="property">@number</span>.split(<span class="string">""</span>)</pre></div></div>
             
         </li>
         
@@ -919,11 +922,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
-              <p>loop through chars</p>
+              <p>init counter</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      $.each chars, <span class="function"><span class="params">(key, value)</span> -&gt;</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      counter = <span class="number">0</span></pre></div></div>
             
         </li>
         
@@ -934,11 +937,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
-              <p>check if odd</p>
+              <p>loop through chars</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> key % <span class="number">2</span> <span class="keyword">is</span> <span class="number">0</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      $.each chars, <span class="function"><span class="params">(key, value)</span> -&gt;</span></pre></div></div>
             
         </li>
         
@@ -949,13 +952,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-59">&#182;</a>
               </div>
-              <p>count up counter</p>
+              <p>check if odd</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>          counter += parseInt(value, <span class="number">10</span>)
-
-        <span class="keyword">else</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> key % <span class="number">2</span> <span class="keyword">is</span> <span class="number">0</span></pre></div></div>
             
         </li>
         
@@ -970,7 +971,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>          counter += <span class="number">3</span> * parseInt(value, <span class="number">10</span>)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>          counter += parseInt(value, <span class="number">10</span>)
+
+        <span class="keyword">else</span></pre></div></div>
             
         </li>
         
@@ -981,16 +984,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-61">&#182;</a>
               </div>
-              <p>check if result % 10 is 0</p>
+              <p>count up counter</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="keyword">if</span> (counter % <span class="number">10</span>) <span class="keyword">is</span> <span class="number">0</span>
-        result = <span class="literal">true</span>
-      <span class="keyword">else</span>
-        result = <span class="literal">false</span>
-
-      alert result</pre></div></div>
+            <div class="content"><div class='highlight'><pre>          counter += <span class="number">3</span> * parseInt(value, <span class="number">10</span>)</pre></div></div>
             
         </li>
         
@@ -1001,11 +999,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
-              <p>return result</p>
+              <p>check if result % 10 is 0</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      result</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      <span class="keyword">if</span> (counter % <span class="number">10</span>) <span class="keyword">is</span> <span class="number">0</span>
+        result = <span class="literal">true</span>
+      <span class="keyword">else</span>
+        result = <span class="literal">false</span></pre></div></div>
             
         </li>
         
@@ -1016,14 +1017,29 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
+              <p>return result</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      result</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-64">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-64">&#182;</a>
+              </div>
               <p>create plugin object</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  $.fn[pluginName] = <span class="function"><span class="params">(options)</span> -&gt;</span>
+            <div class="content"><div class='highlight'><pre>  $.fn[pluginName] = <span class="function"><span class="params">(number, options)</span> -&gt;</span>
     <span class="property">@each</span><span class="function"> -&gt;</span>
       <span class="keyword">if</span> !$.data(@, <span class="string">"plugin_<span class="subst">#{pluginName}</span>"</span>)
-        $.data(@, <span class="string">"plugin_<span class="subst">#{pluginName}</span>"</span>, <span class="keyword">new</span> Plugin(@, options))</pre></div></div>
+        $.data(@, <span class="string">"plugin_<span class="subst">#{pluginName}</span>"</span>, <span class="keyword">new</span> Plugin(@, number, options))</pre></div></div>
             
         </li>
         

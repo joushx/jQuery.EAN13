@@ -19,13 +19,13 @@ module.exports = function(grunt) {
           'level': 'ignore'
         },
         'arrow_spacing':{
-          'level': 'warning'
+          'level': 'warn'
         },
         'line_endings':{
-          'level': 'warning'
+          'level': 'warn'
         },
         'no_empty_param_list':{
-          'level': 'warning'
+          'level': 'warn'
         }
       }
     },

@@ -19,7 +19,6 @@ do ($ = jQuery, window, document) ->
     onValid: ->
     onInvalid: ->
     onError: ->
-    onEncoding: ->
  
   class Plugin
     constructor: (@element, @number, options) ->
@@ -36,10 +35,13 @@ do ($ = jQuery, window, document) ->
       # call draw function
       @init()
 
-    init: () ->
+    init: ->
 
-      @settings.onInvalid.call()
-      #@settings.onValid.call()
+      # check if code is valid
+      if @validate()
+        @settings.onValid.call()
+      else
+        @settings.onInValid.call()
 
       # call getCode method
       code = @getCode()
@@ -200,29 +202,32 @@ do ($ = jQuery, window, document) ->
 
           # loop though right chars
           $.each @number.substr(7).split(""), (key, value) ->
-            
+
             # print text
             context.fillText value, offset, border_height * layout.font_y
 
             # alter offset
             offset += layout.font_stretch * width
+      else
+        #call error callback
+        @settings.onError.call()
 
-    validate: -> 
+    validate: ->
       # init result var
       result = null
-      
+
       # split and reverse number
       chars = @number.split("")
-      
+
       # init counter
       counter = 0
-      
+
       # loop through chars
       $.each chars, (key, value) ->
-        
+
         # check if odd
         if key % 2 is 0
-          
+
           # count up counter
           counter += parseInt(value, 10)
 
@@ -236,14 +241,12 @@ do ($ = jQuery, window, document) ->
         result = true
       else
         result = false
-
-      alert result
       
       # return result
       result
 
   # create plugin object
-  $.fn[pluginName] = (options) ->
+  $.fn[pluginName] = (number, options) ->
     @each ->
       if !$.data(@, "plugin_#{pluginName}")
-        $.data(@, "plugin_#{pluginName}", new Plugin(@, options))
+        $.data(@, "plugin_#{pluginName}", new Plugin(@, number, options))
