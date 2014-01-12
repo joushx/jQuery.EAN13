@@ -18,6 +18,7 @@ do ($ = jQuery, window, document) ->
     # callbacks
     onValid: ->
     onInvalid: ->
+    onSuccess: ->
     onError: ->
  
   class Plugin
@@ -208,6 +209,8 @@ do ($ = jQuery, window, document) ->
 
             # alter offset
             offset += layout.font_stretch * width
+
+        @settings.onSuccess.call()
       else
         #call error callback
         @settings.onError.call()

@@ -105,6 +105,17 @@ $("#ean").EAN13("9002236311036", {
 });
 ```
 
+###onSuccess###
+When the barcode generation and draw process has succeeded `onSuccess` gets called.
+
+```javascript
+$("#ean").EAN13("9002236311036", {
+	onSuccess: function(){
+		// do
+	}
+});
+```
+
 ###onError###
 When the plugin (canvas-element) is not supported by the browser `onError` gets called.
 

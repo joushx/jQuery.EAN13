@@ -9,6 +9,7 @@
       color: "#000",
       onValid: function() {},
       onInvalid: function() {},
+      onSuccess: function() {},
       onError: function() {}
     };
     Plugin = (function() {
@@ -125,11 +126,12 @@
               return offset += layout.font_stretch * width;
             });
             offset = 49 * item_width + (this.settings.prefix ? layout.prefix_offset * this.element.width : 0);
-            return $.each(this.number.substr(7).split(""), function(key, value) {
+            $.each(this.number.substr(7).split(""), function(key, value) {
               context.fillText(value, offset, border_height * layout.font_y);
               return offset += layout.font_stretch * width;
             });
           }
+          return this.settings.onSuccess.call();
         } else {
           return this.settings.onError.call();
         }
