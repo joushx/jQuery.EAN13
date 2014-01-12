@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/joushx/jQuery.EAN13.png?branch=develope)](https://travis-ci.org/joushx/jQuery.EAN13)
+[![Build Status](https://travis-ci.org/joushx/jQuery.EAN13.png?branch=master)](https://travis-ci.org/joushx/jQuery.EAN13)
 
 #jQuery.EAN13
 jQuery.EAN13 is a lightweight (~3kb) jQuery plugin for in-place generation of EAN-13 barcodes.
@@ -100,6 +100,17 @@ When the code is invalid, the `onInvalid` callback gets executed.
 ```javascript
 $("#ean").EAN13("9002236311036", {
 	onInvalid: function(){
+		// do
+	}
+});
+```
+
+###onSuccess###
+When the barcode generation and draw process has succeeded `onSuccess` gets called.
+
+```javascript
+$("#ean").EAN13("9002236311036", {
+	onSuccess: function(){
 		// do
 	}
 });
