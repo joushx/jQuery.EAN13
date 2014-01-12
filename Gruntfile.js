@@ -56,7 +56,7 @@ module.exports = function(grunt) {
                 },
                 homepage: "https://github.com/joushx/jQuery.EAN13",
                 demo: "http://demo.johannes-mittendorfer.com/jquery-ean13",
-		            docs: "https://github.com/joushx/jQuery.EAN13/blob/master/README.md"
+		docs: "https://github.com/joushx/jQuery.EAN13/blob/master/README.md"
             }
         }
     },
@@ -64,14 +64,6 @@ module.exports = function(grunt) {
       compile: {
         files: {
           'dist/<%= pkg.name %>.js': 'src/<%= pkg.name %>.coffee'
-        }
-      }
-    },
-    docco: {
-      debug: {
-        src: ['src/**/*'],
-        options: {
-          output: 'docs/'
         }
       }
     }
@@ -84,10 +76,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jquerymanifest');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-coffeelint');
-  grunt.loadNpmTasks('grunt-docco');
 
   // Default task(s).
-  grunt.registerTask('default', ['coffeelint','coffee','jshint','uglify','qunit','jquerymanifest','docco']);
+  grunt.registerTask('default', ['coffeelint','coffee','jshint','uglify','qunit','jquerymanifest']);
   grunt.registerTask('test', ['coffeelint','coffee','jshint','uglify','qunit']);
 
 };
