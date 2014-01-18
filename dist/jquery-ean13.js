@@ -63,13 +63,14 @@
       Plugin.prototype.draw = function(code) {
         var border_height, chars, context, height, i, item_width, layout, left, lines, offset, prefix, width;
         layout = {
-          prefix_offset: 0.07,
-          font_stretch: 0.078,
+          prefix_offset: 0.06,
+          font_stretch: 0.073,
           border_line_height_number: 0.9,
           border_line_height: 1,
           line_height: 0.9,
-          font_size: 0.2,
-          font_y: 1.03
+          font_size: 0.15,
+          font_y: 1.03,
+          text_offset: 4.5
         };
         width = (this.settings.prefix ? this.element.width * 0.8 : this.element.width);
         if (this.settings.number) {
@@ -119,13 +120,13 @@
             if (this.settings.prefix) {
               context.fillText(prefix, 0, border_height * layout.font_y);
             }
-            offset = item_width * 3 + (this.settings.prefix ? layout.prefix_offset * this.element.width : 0);
+            offset = item_width * layout.text_offset + (this.settings.prefix ? layout.prefix_offset * this.element.width : 0);
             chars = this.number.substr(1, 6).split("");
             $.each(chars, function(key, value) {
               context.fillText(value, offset, border_height * layout.font_y);
               return offset += layout.font_stretch * width;
             });
-            offset = 49 * item_width + (this.settings.prefix ? layout.prefix_offset * this.element.width : 0);
+            offset = 49 * item_width + (this.settings.prefix ? layout.prefix_offset * this.element.width : 0) + layout.text_offset;
             $.each(this.number.substr(7).split(""), function(key, value) {
               context.fillText(value, offset, border_height * layout.font_y);
               return offset += layout.font_stretch * width;
