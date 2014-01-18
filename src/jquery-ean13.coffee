@@ -94,13 +94,14 @@ do ($ = jQuery, window, document) ->
 
       # layout vars
       layout =
-        prefix_offset: 0.07
-        font_stretch: 0.078
+        prefix_offset: 0.06
+        font_stretch: 0.073
         border_line_height_number: 0.9
         border_line_height: 1
         line_height: 0.9
-        font_size: 0.2
+        font_size: 0.15
         font_y: 1.03
+        text_offset: 4.5
 
       # get width of barcode element
       width = (if @settings.prefix then @element.width * 0.8 else @element.width)
@@ -184,7 +185,7 @@ do ($ = jQuery, window, document) ->
           context.fillText prefix, 0, border_height * layout.font_y  if @settings.prefix
 
           # init offset
-          offset = item_width * 3 + ((if @settings.prefix then layout.prefix_offset * @element.width else 0))
+          offset = item_width * layout.text_offset + ((if @settings.prefix then layout.prefix_offset * @element.width else 0))
 
           # split number
           chars = @number.substr(1, 6).split("")
@@ -199,7 +200,7 @@ do ($ = jQuery, window, document) ->
             offset += layout.font_stretch * width
 
           # offset for right numbers
-          offset = 49 * item_width + ((if @settings.prefix then layout.prefix_offset * @element.width else 0))
+          offset = 49 * item_width + ((if @settings.prefix then layout.prefix_offset * @element.width else 0)) + layout.text_offset
 
           # loop though right chars
           $.each @number.substr(7).split(""), (key, value) ->
