@@ -42,7 +42,7 @@ do ($ = jQuery, window, document) ->
       if @validate()
         @settings.onValid.call()
       else
-        @settings.onInValid.call()
+        @settings.onInvalid.call()
 
       # call getCode method
       code = @getCode()
