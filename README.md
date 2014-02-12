@@ -5,6 +5,8 @@ jQuery.EAN13 is a lightweight (~3kb) jQuery plugin for in-place generation of EA
 
 <img src="https://raw.github.com/joushx/jQuery.EAN13/master/barcode.png"/>
 
+Also check out the non-jQuery fork of this project: [EAN13.js](https://github.com/joushx/EAN13.js)
+
 ##Usage##
 
 ###Include Plugin###
