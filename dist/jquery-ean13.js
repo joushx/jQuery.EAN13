@@ -27,7 +27,7 @@
         if (this.validate()) {
           this.settings.onValid.call();
         } else {
-          this.settings.onInValid.call();
+          this.settings.onInvalid.call();
         }
         code = this.getCode();
         return this.draw(code);
@@ -60,6 +60,8 @@
         return code;
       };
 
+      Plugin.prototype.clear = function(context) {};
+
       Plugin.prototype.draw = function(code) {
         var border_height, chars, context, height, i, item_width, layout, left, lines, offset, prefix, width;
         layout = {
@@ -83,6 +85,7 @@
         item_width = width / 95;
         if (this.element.getContext) {
           context = this.element.getContext("2d");
+          this.clear(context);
           context.fillStyle = this.settings.color;
           left = (this.settings.prefix ? this.element.width * layout.prefix_offset : 0);
           lines = code.split("");
@@ -163,9 +166,7 @@
     })();
     return $.fn[pluginName] = function(number, options) {
       return this.each(function() {
-        if (!$.data(this, "plugin_" + pluginName)) {
-          return $.data(this, "plugin_" + pluginName, new Plugin(this, number, options));
-        }
+        return $.data(this, "plugin_" + pluginName, new Plugin(this, number, options));
       });
     };
   })(jQuery, window, document);

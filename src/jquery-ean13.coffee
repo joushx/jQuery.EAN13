@@ -42,7 +42,7 @@ do ($ = jQuery, window, document) ->
       if @validate()
         @settings.onValid.call()
       else
-        @settings.onInValid.call()
+        @settings.onInvalid.call()
 
       # call getCode method
       code = @getCode()
@@ -89,9 +89,12 @@ do ($ = jQuery, window, document) ->
 
       #return result
       return code
+    
+    clear: (context) ->
+      # clear canvas
+      #context.clearRect(0, 0, @element.width, @element.height)
 
     draw: (code) ->
-
       # layout vars
       layout =
         prefix_offset: 0.06
@@ -122,6 +125,9 @@ do ($ = jQuery, window, document) ->
 
         # get draw context
         context = @element.getContext("2d")
+
+        #clear canvas from previous draw
+        @clear(context)
 
         # set fill color
         context.fillStyle = @settings.color
@@ -252,5 +258,4 @@ do ($ = jQuery, window, document) ->
   # create plugin object
   $.fn[pluginName] = (number, options) ->
     @each ->
-      if !$.data(@, "plugin_#{pluginName}")
-        $.data(@, "plugin_#{pluginName}", new Plugin(@, number, options))
+      $.data(@, "plugin_#{pluginName}", new Plugin(@, number, options))
