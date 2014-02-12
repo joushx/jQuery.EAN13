@@ -60,7 +60,9 @@
         return code;
       };
 
-      Plugin.prototype.clear = function(context) {};
+      Plugin.prototype.clear = function(context) {
+        return context.clearRect(0, 0, this.element.width, this.element.height);
+      };
 
       Plugin.prototype.draw = function(code) {
         var border_height, chars, context, height, i, item_width, layout, left, lines, offset, prefix, width;

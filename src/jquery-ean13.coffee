@@ -92,7 +92,7 @@ do ($ = jQuery, window, document) ->
     
     clear: (context) ->
       # clear canvas
-      #context.clearRect(0, 0, @element.width, @element.height)
+      context.clearRect(0, 0, @element.width, @element.height)
 
     draw: (code) ->
       # layout vars
