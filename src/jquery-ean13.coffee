@@ -105,6 +105,7 @@ do ($ = jQuery, window, document) ->
         font_size: 0.15
         font_y: 1.03
         text_offset: 4.5
+        round_correction: 0.5
 
       # get width of barcode element
       width = (if @settings.prefix then @element.width * 0.8 else @element.width)
@@ -149,7 +150,7 @@ do ($ = jQuery, window, document) ->
         while i < 42
 
           # if char is 1: draw a line
-          context.fillRect left, 0, item_width, height  if lines[i] is "1"
+          context.fillRect left, 0, item_width+layout.round_correction, height  if lines[i] is "1"
 
           # alter offset
           left = left + item_width
@@ -167,7 +168,7 @@ do ($ = jQuery, window, document) ->
         while i < 84
 
           # if char is 1: draw a line
-          context.fillRect left, 0, item_width, height  if lines[i] is "1"
+          context.fillRect left, 0, item_width+layout.round_correction, height  if lines[i] is "1"
 
           # alter offset
           left = left + item_width

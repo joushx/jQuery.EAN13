@@ -74,7 +74,8 @@
           line_height: 0.9,
           font_size: 0.15,
           font_y: 1.03,
-          text_offset: 4.5
+          text_offset: 4.5,
+          round_correction: 0.5
         };
         width = (this.settings.prefix ? this.element.width * 0.8 : this.element.width);
         if (this.settings.number) {
@@ -98,7 +99,7 @@
           i = 0;
           while (i < 42) {
             if (lines[i] === "1") {
-              context.fillRect(left, 0, item_width, height);
+              context.fillRect(left, 0, item_width + layout.round_correction, height);
             }
             left = left + item_width;
             i++;
@@ -111,7 +112,7 @@
           i = 42;
           while (i < 84) {
             if (lines[i] === "1") {
-              context.fillRect(left, 0, item_width, height);
+              context.fillRect(left, 0, item_width + layout.round_correction, height);
             }
             left = left + item_width;
             i++;
