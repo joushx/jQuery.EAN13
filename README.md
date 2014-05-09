@@ -5,7 +5,7 @@ jQuery.EAN13 is a lightweight (~3kb) jQuery plugin for in-place generation of EA
 
 <img src="https://raw.github.com/joushx/jQuery.EAN13/master/barcode.png"/>
 
-Also check out the non-jQuery fork of this project: [EAN13.js](https://github.com/joushx/EAN13.js)
+Also have a look at the non-jQuery fork of this project: [EAN13.js](https://github.com/joushx/EAN13.js)
 
 ##Usage##
 
@@ -34,6 +34,12 @@ For printing the code of the provided number with the number under it, just use 
 
 ```javascript
 $("#ean").EAN13("9002236311036");
+```
+
+If you don't provide a check digit (just a 12 digit code) it will be generated for you:
+
+```javascript
+$("#ean").EAN13("900223631103");
 ```
 
 ##Options##
@@ -119,7 +125,7 @@ $("#ean").EAN13("9002236311036", {
 ```
 
 ###onError###
-When the plugin (canvas-element) is not supported by the browser `onError` gets called.
+When the plugin (canvas-element) is not supported by the browser or the code length is wrong `onError` gets called.
 
 ```javascript
 $("#ean").EAN13("9002236311036", {

@@ -38,17 +38,27 @@ do ($ = jQuery, window, document) ->
 
     init: ->
 
-      # check if code is valid
-      if @validate()
-        @settings.onValid.call()
+      if @number.length == 12
+        checkDigit = @generateCheckDigit(@number)
+        @number+=checkDigit
+
+      # check if length of code matches specification
+      if @number.length == 13
+
+        # check if code is valid
+        if @validate()
+          @settings.onValid.call()
+        else
+          @settings.onInvalid.call()
+
+        # call getCode method
+        code = @getCode()
+
+        # call draw function
+        @draw(code)
+
       else
-        @settings.onInvalid.call()
-
-      # call getCode method
-      code = @getCode()
-
-      # call draw function
-      @draw(code)
+        @settings.onError.call()
 
     getCode: ->
 
@@ -222,15 +232,10 @@ do ($ = jQuery, window, document) ->
         #call error callback
         @settings.onError.call()
 
-    validate: ->
-      # init result var
-      result = null
+    generateCheckDigit:(number) ->
 
-      # split and reverse number
-      chars = @number.split("")
-
-      # init counter
       counter = 0
+      chars = number.split("")
 
       # loop through chars
       $.each chars, (key, value) ->
@@ -242,18 +247,14 @@ do ($ = jQuery, window, document) ->
           counter += parseInt(value, 10)
 
         else
-          
+
           # count up counter
           counter += 3 * parseInt(value, 10)
-      
-      # check if result % 10 is 0
-      if (counter % 10) is 0
-        result = true
-      else
-        result = false
-      
-      # return result
-      result
+
+      10-(counter%10)
+
+    validate: ->
+      parseInt(@number.slice(-1),10) == @generateCheckDigit(@number.slice(0,-1))
 
   # create plugin object
   $.fn[pluginName] = (number, options) ->

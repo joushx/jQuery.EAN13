@@ -1,3 +1,11 @@
+/*
+* Copyright (c) 2014 Johannes Mittendorfer (http://johannes-mittendorfer.com)
+* Licensed under the MIT License (LICENSE.txt).
+*
+* Version 1.4.0
+* Build 2014-05-09
+*/
+
 (function() {
   (function($, window, document) {
     "use strict";
@@ -23,14 +31,22 @@
       }
 
       Plugin.prototype.init = function() {
-        var code;
-        if (this.validate()) {
-          this.settings.onValid.call();
-        } else {
-          this.settings.onInvalid.call();
+        var checkDigit, code;
+        if (this.number.length === 12) {
+          checkDigit = this.generateCheckDigit(this.number);
+          this.number += checkDigit;
         }
-        code = this.getCode();
-        return this.draw(code);
+        if (this.number.length === 13) {
+          if (this.validate()) {
+            this.settings.onValid.call();
+          } else {
+            this.settings.onInvalid.call();
+          }
+          code = this.getCode();
+          return this.draw(code);
+        } else {
+          return this.settings.onError.call();
+        }
       };
 
       Plugin.prototype.getCode = function() {
@@ -143,11 +159,10 @@
         }
       };
 
-      Plugin.prototype.validate = function() {
-        var chars, counter, result;
-        result = null;
-        chars = this.number.split("");
+      Plugin.prototype.generateCheckDigit = function(number) {
+        var chars, counter;
         counter = 0;
+        chars = number.split("");
         $.each(chars, function(key, value) {
           if (key % 2 === 0) {
             return counter += parseInt(value, 10);
@@ -155,12 +170,11 @@
             return counter += 3 * parseInt(value, 10);
           }
         });
-        if ((counter % 10) === 0) {
-          result = true;
-        } else {
-          result = false;
-        }
-        return result;
+        return 10 - (counter % 10);
+      };
+
+      Plugin.prototype.validate = function() {
+        return parseInt(this.number.slice(-1), 10) === this.generateCheckDigit(this.number.slice(0, -1));
       };
 
       return Plugin;

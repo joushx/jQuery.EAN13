@@ -4,9 +4,6 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
-      options: {
-        banner: '/*\n* Copyright (c) <%= grunt.template.today("yyyy") %> Johannes Mittendorfer (http://johannes-mittendorfer.com)\n* Licensed under the MIT License (LICENSE.txt).\n*\n* Version <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> \n*/\n\n'
-      },
       build: {
         src: 'dist/<%= pkg.name %>.js',
         dest: 'dist/<%= pkg.name %>.min.js'
@@ -66,6 +63,18 @@ module.exports = function(grunt) {
           'dist/<%= pkg.name %>.js': 'src/<%= pkg.name %>.coffee'
         }
       }
+    },
+    usebanner: {
+      taskName: {
+        options: {
+          position: 'top' || 'bottom',
+          banner: '/*\n* Copyright (c) <%= grunt.template.today("yyyy") %> Johannes Mittendorfer (http://johannes-mittendorfer.com)\n* Licensed under the MIT License (LICENSE.txt).\n*\n* Version <%= pkg.version %>\n* Build <%= grunt.template.today("yyyy-mm-dd") %>\n*/\n',
+          linebreak: true || false
+        },
+        files: {
+          src: ['dist/*.js']
+        }
+      }
     }
   });
 
@@ -76,9 +85,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jquerymanifest');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-coffeelint');
+  grunt.loadNpmTasks('grunt-banner');
 
   // Default task(s).
-  grunt.registerTask('default', ['coffeelint','coffee','jshint','uglify','qunit','jquerymanifest']);
+  grunt.registerTask('default', ['coffeelint','coffee','jshint','uglify','usebanner','qunit','jquerymanifest']);
   grunt.registerTask('test', ['coffeelint','coffee','jshint','uglify','qunit']);
 
 };
