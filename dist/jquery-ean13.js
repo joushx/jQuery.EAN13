@@ -1,11 +1,3 @@
-/*
-* Copyright (c) 2014 Johannes Mittendorfer (http://johannes-mittendorfer.com)
-* Licensed under the MIT License (LICENSE.txt).
-*
-* Version 1.3.5
-* Build 2014-05-09
-*/
-
 (function() {
   (function($, window, document) {
     "use strict";
