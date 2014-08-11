@@ -20,10 +20,10 @@ do ($ = jQuery, window, document) ->
     onInvalid: ->
     onSuccess: ->
     onError: ->
- 
+
   class Plugin
     constructor: (@element, @number, options) ->
-  
+
       # create settings object
       @settings = $.extend {}, defaults, options
 
@@ -66,7 +66,7 @@ do ($ = jQuery, window, document) ->
       x = ["0001101", "0011001", "0010011", "0111101", "0100011", "0110001", "0101111", "0111011", "0110111", "0001011"]
       y = ["0100111", "0110011", "0011011", "0100001", "0011101", "0111001", "0000101", "0010001", "0001001", "0010111"]
       z = ["1110010", "1100110", "1101100", "1000010", "1011100", "1001110", "1010000", "1000100", "1001000", "1110100"]
-      
+
       # countries table
       countries = ["xxxxxx", "xxyxyy", "xxyyxy", "xxyyyx", "xyxxyy", "xyyxxy", "xyyyxx", "xyxyxy", "xyxyyx", "xyyxyx"]
 
@@ -99,7 +99,7 @@ do ($ = jQuery, window, document) ->
 
       #return result
       return code
-    
+
     clear: (context) ->
       # clear canvas
       context.clearRect(0, 0, @element.width, @element.height)
@@ -117,7 +117,7 @@ do ($ = jQuery, window, document) ->
         text_offset: 4.5
 
       # get width of barcode element
-      width = (if @settings.prefix then @element.width * 0.8 else @element.width)
+      width = (if @settings.prefix then @element.width-(@element.width * layout.prefix_offset) else @element.width)
 
       # check if number should be printed
       if @settings.number
