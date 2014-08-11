@@ -2,8 +2,8 @@
 * Copyright (c) 2014 Johannes Mittendorfer (http://johannes-mittendorfer.com)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version 1.4.0
-* Build 2014-05-09
+* Version 1.4.1
+* Build 2014-08-11
 */
 
 (function() {
@@ -92,7 +92,7 @@
           font_y: 1.03,
           text_offset: 4.5
         };
-        width = (this.settings.prefix ? this.element.width * 0.8 : this.element.width);
+        width = (this.settings.prefix ? this.element.width - (this.element.width * layout.prefix_offset) : this.element.width);
         if (this.settings.number) {
           border_height = layout.border_line_height_number * this.element.height;
           height = layout.line_height * border_height;
