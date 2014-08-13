@@ -8,33 +8,8 @@ do ($ = jQuery, window, document) ->
   "use strict"
 
   class EAN13
-    constructor: (@element, @number, options) ->
 
-      # set defaults
-      defaults =
-
-        # settings
-        number: true
-        prefix: true
-        color: "#000"
-
-        # callbacks
-        onValid: ->
-        onInvalid: ->
-        onSuccess: ->
-        onError: ->
-
-      # create settings object
-      @settings = $.extend {}, defaults, options
-
-      # set defaults
-      @_defaults = defaults
-
-      # set name
-      @_name = pluginName
-
-      # call draw function
-      @init()
+    settings: {}
 
     init: ->
 
@@ -227,6 +202,14 @@ do ($ = jQuery, window, document) ->
             # alter offset
             offset += layout.font_stretch * width
 
+        # check if debug pattern should be printed (use with prefix=false)
+        if @settings.debug
+          for x in [0..width] by item_width*2
+            context.beginPath()
+            context.rect(x, height*0.4, item_width, height*0.1)
+            context.fillStyle = 'red'
+            context.fill()
+
         @settings.onSuccess.call()
       else
         #call error callback
@@ -255,6 +238,33 @@ do ($ = jQuery, window, document) ->
 
     validate: ->
       parseInt(@number.slice(-1),10) == @generateCheckDigit(@number.slice(0,-1))
+
+    constructor: (@element, @number, options) ->
+
+      # set defaults
+      @settings =
+
+        # settings
+        number: true
+        prefix: true
+        color: "#000"
+        debug: false
+
+        # callbacks
+        onValid: ->
+        onInvalid: ->
+        onSuccess: ->
+        onError: ->
+
+      if options
+        for option of options
+          @settings[option] = options[option]
+
+      # set name
+      @_name = pluginName
+
+      # call draw function
+      @init()
 
 
   # create plugin object
