@@ -3,42 +3,39 @@
   <head>
       <meta charset='UTF-8' />
       <meta http-equiv='content-type' content='text/html; charset=utf-8' />
- 
       <title>Valid barcode</title>
- 
       <link rel='stylesheet' href='http://code.jquery.com/qunit/qunit-1.12.0.css'>
       <script src='http://code.jquery.com/jquery-2.0.3.js'></script>
       <script src='../dist/jquery-ean13.min.js'></script>
+      <script src='../dist/ean13.min.js'></script>
       <script src='http://code.jquery.com/qunit/qunit-1.12.0.js'></script>
-
-
- 
-
- 
   </head>
   <body>
 
-	<canvas id="ean" width="400" height="200"></canvas>
-
-    <div id="qunit"></div> <!-- QUnit fills this with results, etc -->
+    <div id="qunit"></div>
     <div id='qunit-fixture'>
- 
-      <!-- any HTML you want to be present in each test (will be reset for each test) -->
- 
+      <canvas id="ean" width="400" height="200"></canvas>
     </div>
 
-      <script type="text/javascript">
-		module("Validation Tests");
-	 
-		test("success callback test", function() {
+    <script type="text/javascript">
+	    module("Validation Tests");
 
-			$("#ean").EAN13("5449000096241", {
-			    onSuccess: function(){
-				ok(true, "onSuccess called");
-			    }
-			});
-		});
-	
-      </script>
+	    test("jquery", function() {
+		    $("#ean").EAN13("5449000096241", {
+		      onSuccess: function(){
+			      ok(true, "onSuccess called");
+		      }
+		    });
+	    });
+
+      test("js", function() {
+        new EAN13(document.getElementById("ean"),"5449000096241", {
+          onSuccess: function(){
+            ok(true, "onSuccess called");
+          }
+        });
+      });
+    </script>
+
   </body>
 </html>
