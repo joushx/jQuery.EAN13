@@ -8,29 +8,30 @@
 
 (function() {
   (function($, window, document) {
-    "use strict";
-    var Plugin, defaults, pluginName;
+    var EAN13, pluginName;
     pluginName = "EAN13";
-    defaults = {
-      number: true,
-      prefix: true,
-      color: "#000",
-      onValid: function() {},
-      onInvalid: function() {},
-      onSuccess: function() {},
-      onError: function() {}
-    };
-    Plugin = (function() {
-      function Plugin(element, number, options) {
+    "use strict";
+    EAN13 = (function() {
+      function EAN13(element, number, options) {
+        var defaults;
         this.element = element;
         this.number = number;
+        defaults = {
+          number: true,
+          prefix: true,
+          color: "#000",
+          onValid: function() {},
+          onInvalid: function() {},
+          onSuccess: function() {},
+          onError: function() {}
+        };
         this.settings = $.extend({}, defaults, options);
         this._defaults = defaults;
         this._name = pluginName;
         this.init();
       }
 
-      Plugin.prototype.init = function() {
+      EAN13.prototype.init = function() {
         var checkDigit, code;
         if (this.number.length === 12) {
           checkDigit = this.generateCheckDigit(this.number);
@@ -49,7 +50,7 @@
         }
       };
 
-      Plugin.prototype.getCode = function() {
+      EAN13.prototype.getCode = function() {
         var c_encoding, code, countries, i, parts, raw_number, x, y, z;
         x = ["0001101", "0011001", "0010011", "0111101", "0100011", "0110001", "0101111", "0111011", "0110111", "0001011"];
         y = ["0100111", "0110011", "0011011", "0100001", "0011101", "0111001", "0000101", "0010001", "0001001", "0010111"];
@@ -76,11 +77,11 @@
         return code;
       };
 
-      Plugin.prototype.clear = function(context) {
+      EAN13.prototype.clear = function(context) {
         return context.clearRect(0, 0, this.element.width, this.element.height);
       };
 
-      Plugin.prototype.draw = function(code) {
+      EAN13.prototype.draw = function(code) {
         var border_height, chars, context, height, i, item_width, layout, left, lines, offset, prefix, width;
         layout = {
           prefix_offset: 0.06,
@@ -159,7 +160,7 @@
         }
       };
 
-      Plugin.prototype.generateCheckDigit = function(number) {
+      EAN13.prototype.generateCheckDigit = function(number) {
         var chars, counter;
         counter = 0;
         chars = number.split("");
@@ -173,16 +174,16 @@
         return 10 - (counter % 10);
       };
 
-      Plugin.prototype.validate = function() {
+      EAN13.prototype.validate = function() {
         return parseInt(this.number.slice(-1), 10) === this.generateCheckDigit(this.number.slice(0, -1));
       };
 
-      return Plugin;
+      return EAN13;
 
     })();
     return $.fn[pluginName] = function(number, options) {
       return this.each(function() {
-        return $.data(this, "plugin_" + pluginName, new Plugin(this, number, options));
+        return $.data(this, "plugin_" + pluginName, new EAN13(this, number, options));
       });
     };
   })(jQuery, window, document);

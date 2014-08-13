@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+      <meta charset='UTF-8' />
+      <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+      <title>No number</title>
+      <link rel='stylesheet' href='http://code.jquery.com/qunit/qunit-1.12.0.css'>
+      <script src='http://code.jquery.com/jquery-2.0.3.js'></script>
+      <script src='../dist/jquery-ean13.min.js'></script>
+      <script src='../dist/ean13.min.js'></script>
+      <script src='http://code.jquery.com/qunit/qunit-1.12.0.js'></script>
+  </head>
+  <body>
+
+    <div id="qunit"></div>
+    <div id='qunit-fixture'>
+      <canvas id="ean" width="400" height="200"></canvas>
+    </div>
+
+    <script type="text/javascript">
+      module("Validation Tests");
+
+      test("jquery no number", function() {
+        $("#ean").EAN13("5901234123450", {
+          number: false,
+          onSuccess: function(){
+            var ctx = document.getElementById("ean").getContext("2d");
+
+            if(numberPrinted(ctx)){
+              ok(false,"Number printed also when off");
+            }
+            else{
+              ok(true,"Number not printed");
+            }
+          }
+        });
+      });
+
+      test("js no number", function() {
+        new EAN13(document.getElementById("ean"),"5901234123450", {
+          number: false,
+          onSuccess: function(){
+            var ctx = document.getElementById("ean").getContext("2d");
+
+            if(numberPrinted(ctx)){
+              ok(false,"Number printed also when off");
+            }
+            else{
+              ok(true,"Number not printed");
+            }
+          }
+        });
+      });
+
+      test("js print number", function() {
+        new EAN13(document.getElementById("ean"),"5901234123450", {
+          onSuccess: function(){
+            var ctx = document.getElementById("ean").getContext("2d");
+
+            if(numberPrinted(ctx)){
+              ok(true,"Number printed");
+            }
+            else{
+              ok(false,"Number not printed when on");
+            }
+          }
+        });
+      });
+
+      test("jquery print number", function() {
+        $("#ean").EAN13("5901234123450", {
+          onSuccess: function(){
+            var ctx = document.getElementById("ean").getContext("2d");
+
+            if(numberPrinted(ctx)){
+              ok(true,"Number printed");
+            }
+            else{
+              ok(false,"Number not printed when on");
+            }
+          }
+        });
+      });
+
+      function numberPrinted(ctx){
+        var y = 190;
+        for(var x = 0; x < 200; x++){
+          var data = ctx.getImageData(x, y, 1, 1).data;
+          if(data[3] != 0){
+            return false;
+          }
+        }
+        return true;
+      }
+    </script>
+
+  </body>
+</html>

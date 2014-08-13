@@ -1,40 +1,50 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset='UTF-8' />
-		<meta http-equiv='content-type' content='text/html; charset=utf-8' />
- 
-		<title>Code-correct</title>
- 
-		<link rel='stylesheet' href='http://code.jquery.com/qunit/qunit-1.12.0.css'>
-		<script src='http://code.jquery.com/jquery-2.0.3.js'></script>
-		<script src='../dist/jquery-ean13.min.js'></script>
-		<script src='http://code.jquery.com/qunit/qunit-1.12.0.js'></script>
-	</head>
-	<body>
-		<canvas id="ean" width="400" height="200"></canvas>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+    <title>Code-correct</title>
+    <link rel='stylesheet' href='http://code.jquery.com/qunit/qunit-1.12.0.css'>
+    <script src='http://code.jquery.com/jquery-2.0.3.js'></script>
+    <script src='../dist/jquery-ean13.js'></script>
+    <script src='../dist/ean13.js'></script>
+    <script src='http://code.jquery.com/qunit/qunit-1.12.0.js'></script>
+  </head>
+  <body>
 
-    		<div id="qunit"></div> <!-- QUnit fills this with results, etc -->
-    		<div id='qunit-fixture'>
- 
-      		<!-- any HTML you want to be present in each test (will be reset for each test) -->
- 
-    		</div>
+    <div id="qunit"></div>
+    <div id='qunit-fixture'>
+      <canvas id="ean" width="400" height="200"></canvas>
+    </div>
 
-     		<script type="text/javascript">
-			module("Validation Tests");
- 
-			test("code correct test", function() {
+    <script type="text/javascript">
+      module("Validation Tests");
 
-				var object = $("#ean").EAN13("5449000096241");
+      var number = "5449000096241";
+      var code = "010001100111010010111000110100011010100111111001011101001010000110110010111001100110";
 
-				if(object.data('plugin_EAN13').getCode() == "010001100111010010111000110100011010100111111001011101001010000110110010111001100110"){
-					ok(true, "Code correct");
-				}
-				else{
-					ok(false, "Code incorrect");
-				}
-			});
-      		</script>
-  	</body>
+      test("jquery", function() {
+        var object = $("#ean").EAN13(number,{});
+
+        if(object.data('plugin_EAN13').getCode() == code){
+          ok(true, "Code correct");
+        }
+        else{
+          ok(false, "Code incorrect");
+        }
+      });
+
+      test("js", function() {
+        var object = new EAN13(document.getElementById("ean"),number,{});
+
+        if(object.getCode() == code){
+          ok(true, "Code correct");
+        }
+        else{
+          ok(false, "Code incorrect");
+        }
+      });
+    </script>
+
+  </body>
 </html>
