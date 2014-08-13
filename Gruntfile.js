@@ -49,6 +49,9 @@ module.exports = function(grunt) {
     },
     coffee:{
       compile: {
+        options: {
+          bare: true
+        },
         files: {
           'dist/<%= pkg.name %>.js': 'dist/<%= pkg.name %>.coffee',
           'dist/ean13.js': 'dist/ean13.coffee'

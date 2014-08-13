@@ -2,33 +2,8 @@
 "use strict"
 
 class EAN13
-  constructor: (@element, @number, options) ->
 
-    # set defaults
-    defaults =
-
-      # settings
-      number: true
-      prefix: true
-      color: "#000"
-
-      # callbacks
-      onValid: ->
-      onInvalid: ->
-      onSuccess: ->
-      onError: ->
-
-    # create settings object
-    @settings = $.extend {}, defaults, options
-
-    # set defaults
-    @_defaults = defaults
-
-    # set name
-    @_name = pluginName
-
-    # call draw function
-    @init()
+  settings: {}
 
   init: ->
 
@@ -249,3 +224,31 @@ class EAN13
 
   validate: ->
     parseInt(@number.slice(-1),10) == @generateCheckDigit(@number.slice(0,-1))
+
+  constructor: (@element, @number, options) ->
+
+    # set defaults
+    defaults =
+
+      # settings
+      number: true
+      prefix: true
+      color: "#000"
+
+      # callbacks
+      onValid: ->
+      onInvalid: ->
+      onSuccess: ->
+      onError: ->
+
+    if options
+      for option of defaults
+        @settings[option] = options[option] || defaults[option]
+    else
+      @settings = defaults
+
+    # set name
+    @_name = pluginName
+
+    # call draw function
+    @init()
