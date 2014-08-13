@@ -1,22 +1,29 @@
 [![Build Status](https://travis-ci.org/joushx/jQuery.EAN13.png?branch=master)](https://travis-ci.org/joushx/jQuery.EAN13) <a href="https://flattr.com/submit/auto?user_id=joushx&url=https%3A%2F%2Fgithub.com%2Fjoushx%2FjQuery.EAN13" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
 
-#jQuery.EAN13
-jQuery.EAN13 is a lightweight (~3kb) jQuery plugin for in-place generation of EAN-13 barcodes.
+#jQuery.EAN13.js
+jQuery.EAN13.js is a lightweight library available as plain JavaScript and as jQuery plugin for the generation of EAN-13 barcodes.
 
 <img src="https://raw.github.com/joushx/jQuery.EAN13/master/barcode.png"/>
-
-Also have a look at the non-jQuery fork of this project: [EAN13.js](https://github.com/joushx/EAN13.js)
 
 ##Usage##
 
 ###Include Plugin###
 Insert the following code into the `head` section of you page:
 
+####JavaScript####
+
 ```html
 <script type="text/javascript" src="jquery-ean13.min.js"></script>
 ```
 
-Make sure to include this AFTER the jQuery-library.
+
+####jQuery####
+
+```html
+<script type="text/javascript" src="ean13.min.js"></script>
+```
+
+Make sure to include this **after** the jQuery-library.
 
 ###Insert Canvas###
 At the place where you want to insert the barcode insert this code:
@@ -29,111 +36,65 @@ At the place where you want to insert the barcode insert this code:
 
 You may change the dimensions of the element. The barcode will automatically be resized.
 
-###Print barcode###
-For printing the code of the provided number with the number under it, just use the following code:
+###Simple barcode###
+For printing the barcode without any further options use the following code.
+If you don't provide a check digit (just a 12 digit code) it will be generated for you on the fly.
 
+####JavaScript####
+
+```javascript
+var element = document.getElementById("ean");
+new EAN13(element, "9002236311036");
+```
+
+####jQuery####
 ```javascript
 $("#ean").EAN13("9002236311036");
 ```
 
-If you don't provide a check digit (just a 12 digit code) it will be generated for you:
-
-```javascript
-$("#ean").EAN13("900223631103");
-```
-
 ##Options##
 
-###Without number###
-For only printing the barcode use the code below:
+The library provides some options and callback functions. To use them simply provide a option object as the second argument.
+
+###Example###
+
+####JavaScript####
 
 ```javascript
-$("#ean").EAN13("9002236311036", {
-	number: false
-});
+var options = {
+	number: false,
+	prefix: false,
+	onSuccess: function(){
+	  alert("Heeeey!");
+	}
+}
+
+new EAN13(document.getElementById("ean"), "9002236311036", options);
 ```
 
-###Prefix###
-Set the `prefix` option to false to not print the country prefix:
+####jQuery####
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
+	number: false,
 	prefix: false
 });
 ```
 
-###Color###
-Set the `color` option to a color to print the barcode with it.
+###List of options###
 
-####Hex-value####
+identifier | type    | default value | description
+-----------|---------|---------------|-------------
+number		 | boolean | true          | If `true` the number is printed underneath the barcode to be readable for humans.
+prefix		 | boolean | true          | If `true` the country prefix (to be precise the first digit of it) is printed at the left of the barcode.
+color			 | string  | #000          | The color of the barcode. Accepts any CSS colors e.g. `#ff0000`, `green`, `rgb(0,0,0)` or `rgb(0,0,0,0.5)`.
+debug			 | boolean | false				 | If `true` a checkered pattern is drawn above the barcode to help identify the lines.
 
-```javascript
-$("#ean").EAN13("9002236311036", {
-	color: "#f00"
-});
-```
+###List of callbacks###
 
-####RGB-value####
-
-```javascript
-$("#ean").EAN13("9002236311036", {
-	color: "rgb(255,0,0)"
-});
-```
-
-####RGBA-value####
-
-```javascript
-$("#ean").EAN13("9002236311036", {
-	color: "rgb(255,0,0,0.2)"
-});
-```
-
-##Callbacks##
-
-###onValid###
-When the code is valid, the `onValid` callback gets executed.
-
-```javascript
-$("#ean").EAN13("9002236311036", {
-	onValid: function(){
-		// do
-	}
-});
-```
-
-###onInvalid###
-When the code is invalid, the `onInvalid` callback gets executed.
-
-```javascript
-$("#ean").EAN13("9002236311036", {
-	onInvalid: function(){
-		// do
-	}
-});
-```
-
-###onSuccess###
-When the barcode generation and draw process has succeeded `onSuccess` gets called.
-
-```javascript
-$("#ean").EAN13("9002236311036", {
-	onSuccess: function(){
-		// do
-	}
-});
-```
-
-###onError###
-When the plugin (canvas-element) is not supported by the browser or the code length is wrong `onError` gets called.
-
-```javascript
-$("#ean").EAN13("9002236311036", {
-	onError: function(){
-		// do
-	}
-});
-```
-
-##Author##
-Johannes Mittendorfer (http://johannes-mittendorfer.com)
+identifier | description
+-----------|---------
+onValid		 | Fired if the checksum of the provided code is correct. Not used if a 12 digit code is provided.
+onInvalid  | Fired is the checksum is not correct. Not used if a 12 digit code is provided.
+onSuccess  | Fired at the end of the painting process and if no errors occurred.
+onError    | Fired if the were any errors while painting. (For instance the canvas element is not present)

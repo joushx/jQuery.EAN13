@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+      <meta charset='UTF-8' />
+      <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+      <title>Code readable</title>
+      <link rel='stylesheet' href='http://code.jquery.com/qunit/qunit-1.12.0.css'>
+      <script src='http://code.jquery.com/jquery-2.0.3.js'></script>
+      <script src='../dist/jquery-ean13.min.js'></script>
+      <script src='../dist/ean13.min.js'></script>
+      <script src='http://code.jquery.com/qunit/qunit-1.12.0.js'></script>
+  </head>
+  <body>
+
+    <div id="qunit"></div>
+    <div id='qunit-fixture'>
+      <canvas id="ean" width="380" height="200"></canvas>
+    </div>
+
+    <script type="text/javascript">
+      module("Validation Tests");
+
+      var number = "5449000096241";
+      var code = "010001100111010010111000110100011010100111111001011101001010000110110010111001100110";
+
+      test("jquery readable", function() {
+        $("#ean").EAN13(number, {
+          prefix: false,
+          onSuccess: function(){
+            var ctx = document.getElementById("ean").getContext("2d");
+            ok(readNumber(ctx) == "101" + code.substring(0,42) + "01010" + code.substring(42) + "101", "Number not readable");
+          }
+        });
+      });
+
+      test("js readable", function() {
+        new EAN13(document.getElementById("ean"), number, {
+          prefix: false,
+          onSuccess: function(){
+            var ctx = document.getElementById("ean").getContext("2d");
+            ok(readNumber(ctx) == "101" + code.substring(0,42) + "01010" + code.substring(42) + "101", "Number not readable");
+          }
+        });
+      });
+
+      function readNumber(ctx){
+        var lines = [];
+        var y = 100;
+        for(var x = 0; x < 380; x+=4){
+          var data = ctx.getImageData(x+2, y, 1, 1).data;
+          if(data[3] != 0){
+            lines.push(1);
+          }
+          else{
+            lines.push(0);
+          }
+        }
+        return lines.join("");
+      }
+    </script>
+
+  </body>
+</html>
