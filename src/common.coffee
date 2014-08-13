@@ -196,6 +196,14 @@ class EAN13
           # alter offset
           offset += layout.font_stretch * width
 
+      # check if debug pattern should be printed (use with prefix=false)
+      if @settings.debug
+        for x in [0..width] by item_width*2
+          context.beginPath()
+          context.rect(x, height*0.4, item_width, height*0.1)
+          context.fillStyle = 'red'
+          context.fill()
+
       @settings.onSuccess.call()
     else
       #call error callback
@@ -234,6 +242,7 @@ class EAN13
       number: true
       prefix: true
       color: "#000"
+      debug: false
 
       # callbacks
       onValid: ->
