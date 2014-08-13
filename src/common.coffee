@@ -228,7 +228,7 @@ class EAN13
   constructor: (@element, @number, options) ->
 
     # set defaults
-    defaults =
+    @settings =
 
       # settings
       number: true
@@ -242,10 +242,8 @@ class EAN13
       onError: ->
 
     if options
-      for option of defaults
-        @settings[option] = options[option] || defaults[option]
-    else
-      @settings = defaults
+      for option of options
+        @settings[option] = options[option]
 
     # set name
     @_name = pluginName
