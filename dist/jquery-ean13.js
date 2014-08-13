@@ -2,7 +2,7 @@
 * Copyright (c) 2014 Johannes Mittendorfer (http://johannes-mittendorfer.com)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version 1.4.0
+* Version 1.4.1
 * Build 2014-08-11
 */
 
