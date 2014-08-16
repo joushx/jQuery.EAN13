@@ -2,8 +2,8 @@
 * Copyright (c) 2014 Johannes Mittendorfer (http://johannes-mittendorfer.com)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version 1.4.1
-* Build 2014-08-13
+* Version 2.1.0
+* Build 2014-08-16
 */
 
 (function($, window, document) {
@@ -81,14 +81,14 @@
         height = layout.line_height * border_height;
       } else {
         border_height = layout.border_line_height * this.element.height;
-        height = layout.line_height * border_height;
+        height = border_height;
       }
       item_width = width / 95;
       if (this.element.getContext) {
         context = this.element.getContext("2d");
         this.clear(context);
         context.fillStyle = this.settings.color;
-        left = (this.settings.prefix ? this.element.width * layout.prefix_offset : 0);
+        left = this.settings.number && this.settings.prefix ? this.element.width * layout.prefix_offset : 0;
         lines = code.split("");
         context.fillRect(left, 0, item_width, border_height);
         left = left + item_width * 2;

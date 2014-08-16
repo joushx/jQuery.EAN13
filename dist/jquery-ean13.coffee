@@ -100,7 +100,7 @@ do ($ = jQuery, window, document) ->
         height = layout.line_height * border_height
       else
         border_height = layout.border_line_height * @element.height
-        height = layout.line_height * border_height
+        height = border_height
 
       # calculate width of every element
       item_width = width / 95
@@ -118,7 +118,7 @@ do ($ = jQuery, window, document) ->
         context.fillStyle = @settings.color
 
         # init var for offset in x-axis
-        left = (if @settings.prefix then @element.width * layout.prefix_offset else 0)
+        left = if (@settings.number && @settings.prefix) then @element.width * layout.prefix_offset else 0
 
         # get chars of code for drawing every line
         lines = code.split("")
