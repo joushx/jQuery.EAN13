@@ -1,6 +1,6 @@
 {
   "name": "ean13",
-  "version": "1.4.1",
+  "version": "2.1.0",
   "title": "jQuery EAN 13",
   "author": {
     "name": "Johannes Mittendorfer",
@@ -16,7 +16,7 @@
     "grunt": "~0.4.2",
     "jquery": "*"
   },
-  "description": "jQuery plugin for generating EAN13-barcodes",
+  "description": "A JavaScript library for the generation of EAN13-barcodes",
   "keywords": [
     "ean13",
     "barcode",
