@@ -2,8 +2,8 @@
 * Copyright (c) 2014 Johannes Mittendorfer (http://johannes-mittendorfer.com)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version 2.1.0
-* Build 2014-08-16
+* Version 2.1.1
+* Build 2014-10-07
 */
 
 (function($, window, document) {
@@ -161,7 +161,7 @@
           return counter += 3 * parseInt(value, 10);
         }
       });
-      return 10 - (counter % 10);
+      return 10 - (counter % 10) % 10;
     };
 
     EAN13.prototype.validate = function() {
