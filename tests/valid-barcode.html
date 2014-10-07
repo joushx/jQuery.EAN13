@@ -64,6 +64,17 @@
           }
         });
       });
+
+      test("check sum zero", function() {
+        new EAN13(document.getElementById("ean"),"0000000000130", {
+          onValid: function(){
+            ok(false, "Check sum zero works");
+          },
+          onInvalid: function(){
+            ok(true, "Check sum zero is invalid");
+          }
+        });
+      });
     </script>
 
   </body>

@@ -234,7 +234,7 @@ do ($ = jQuery, window, document) ->
           # count up counter
           counter += 3 * parseInt(value, 10)
 
-      10-(counter%10)
+      10-(counter%10) % 10
 
     validate: ->
       parseInt(@number.slice(-1),10) == @generateCheckDigit(@number.slice(0,-1))
