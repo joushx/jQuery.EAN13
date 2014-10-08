@@ -3,7 +3,7 @@
 * Licensed under the MIT License (LICENSE.txt).
 *
 * Version 2.1.1
-* Build 2014-10-07
+* Build 2014-10-08
 */
 
 var EAN13, pluginName;
