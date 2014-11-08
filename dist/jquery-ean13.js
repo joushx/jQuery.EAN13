@@ -2,8 +2,8 @@
 * Copyright (c) 2014 Johannes Mittendorfer (http://johannes-mittendorfer.com)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version 2.1.1
-* Build 2014-10-08
+* Version 2.1.2
+* Build 2014-11-08
 */
 
 (function($, window, document) {
