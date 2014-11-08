@@ -182,7 +182,7 @@ do ($ = jQuery, window, document) ->
           chars = @number.substr(1, 6).split("")
 
           # loop though left chars
-          $.each chars, (key, value) ->
+          for value, key in chars
 
             # print text
             context.fillText value, offset, border_height * layout.font_y
@@ -194,7 +194,7 @@ do ($ = jQuery, window, document) ->
           offset = 49 * item_width + ((if @settings.prefix then layout.prefix_offset * @element.width else 0)) + layout.text_offset
 
           # loop though right chars
-          $.each @number.substr(7).split(""), (key, value) ->
+          for value, key in (@number.substr(7).split(""))
 
             # print text
             context.fillText value, offset, border_height * layout.font_y
@@ -221,7 +221,7 @@ do ($ = jQuery, window, document) ->
       chars = number.split("")
 
       # loop through chars
-      $.each chars, (key, value) ->
+      for value, key in chars
 
         # check if odd
         if key % 2 is 0

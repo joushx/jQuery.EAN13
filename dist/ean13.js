@@ -2,8 +2,8 @@
 * Copyright (c) 2014 Johannes Mittendorfer (http://johannes-mittendorfer.com)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version 2.1.1
-* Build 2014-10-07
+* Version 2.1.2
+* Build 2014-11-08
 */
 
 var EAN13, pluginName;
@@ -66,7 +66,7 @@ EAN13 = (function() {
   };
 
   EAN13.prototype.draw = function(code) {
-    var border_height, chars, context, height, i, item_width, layout, left, lines, offset, prefix, width, x, _i, _ref;
+    var border_height, chars, context, height, i, item_width, key, layout, left, lines, offset, prefix, value, width, x, _i, _j, _k, _len, _len1, _ref, _ref1;
     layout = {
       prefix_offset: 0.06,
       font_stretch: 0.073,
@@ -128,18 +128,21 @@ EAN13 = (function() {
         }
         offset = item_width * layout.text_offset + (this.settings.prefix ? layout.prefix_offset * this.element.width : 0);
         chars = this.number.substr(1, 6).split("");
-        $.each(chars, function(key, value) {
+        for (key = _i = 0, _len = chars.length; _i < _len; key = ++_i) {
+          value = chars[key];
           context.fillText(value, offset, border_height * layout.font_y);
-          return offset += layout.font_stretch * width;
-        });
+          offset += layout.font_stretch * width;
+        }
         offset = 49 * item_width + (this.settings.prefix ? layout.prefix_offset * this.element.width : 0) + layout.text_offset;
-        $.each(this.number.substr(7).split(""), function(key, value) {
+        _ref = this.number.substr(7).split("");
+        for (key = _j = 0, _len1 = _ref.length; _j < _len1; key = ++_j) {
+          value = _ref[key];
           context.fillText(value, offset, border_height * layout.font_y);
-          return offset += layout.font_stretch * width;
-        });
+          offset += layout.font_stretch * width;
+        }
       }
       if (this.settings.debug) {
-        for (x = _i = 0, _ref = item_width * 2; _ref > 0 ? _i <= width : _i >= width; x = _i += _ref) {
+        for (x = _k = 0, _ref1 = item_width * 2; _ref1 > 0 ? _k <= width : _k >= width; x = _k += _ref1) {
           context.beginPath();
           context.rect(x, height * 0.4, item_width, height * 0.1);
           context.fillStyle = 'red';
@@ -153,16 +156,17 @@ EAN13 = (function() {
   };
 
   EAN13.prototype.generateCheckDigit = function(number) {
-    var chars, counter;
+    var chars, counter, key, value, _i, _len;
     counter = 0;
     chars = number.split("");
-    $.each(chars, function(key, value) {
+    for (key = _i = 0, _len = chars.length; _i < _len; key = ++_i) {
+      value = chars[key];
       if (key % 2 === 0) {
-        return counter += parseInt(value, 10);
+        counter += parseInt(value, 10);
       } else {
-        return counter += 3 * parseInt(value, 10);
+        counter += 3 * parseInt(value, 10);
       }
-    });
+    }
     return 10 - (counter % 10) % 10;
   };
 
