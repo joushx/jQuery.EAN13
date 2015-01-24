@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/joushx/jQuery.EAN13.png?branch=master)](https://travis-ci.org/joushx/jQuery.EAN13) <a href="https://flattr.com/submit/auto?user_id=joushx&url=https%3A%2F%2Fgithub.com%2Fjoushx%2FjQuery.EAN13" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
+[![Build Status](https://travis-ci.org/joushx/jQuery.EAN13.png?branch=master)](https://travis-ci.org/joushx/jQuery.EAN13) <a href="https://flattr.com/submit/auto?user_id=joushx&url=https%3A%2F%2Fgithub.com%2Fjoushx%2FjQuery.EAN13" target="_blank"><img src="//api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
 
 #jQuery.EAN13.js
 jQuery.EAN13.js is a lightweight library available as plain JavaScript and as jQuery plugin for the generation of EAN-13 barcodes.
