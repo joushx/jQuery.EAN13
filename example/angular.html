@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app="barcodeApp">
+    <head>
+        <meta charset="utf-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+        <script src="../dist/ean13.js"></script>
+        <script src="../dist/ean13-angular.js"></script>
+        <script type="text/javascript">
+          angular.module('barcodeApp', ["ean13"]);
+        </script>
+    </head>
+    <body>
+      <ean13 height="200" width="300" code="{{number}}"></ean13><br>
+      <input ng-model="number">
+
+      (i.e. 590123412345)
+    </body>
+</html>
