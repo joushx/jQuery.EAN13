@@ -88,7 +88,9 @@ identifier | type    | default value | description
 number		 | boolean | true          | If `true` the number is printed underneath the barcode to be readable for humans.
 prefix		 | boolean | true          | If `true` the country prefix (to be precise the first digit of it) is printed at the left of the barcode.
 color			 | string  | #000          | The color of the barcode. Accepts any CSS colors e.g. `#ff0000`, `green`, `rgb(0,0,0)` or `rgb(0,0,0,0.5)`.
-debug			 | boolean | false				 | If `true` a checkered pattern is drawn above the barcode to help identify the lines.
+background | string  | null          | The background color of the barcode. Accepts any CSS colors e.g. `#ff0000`, `green`, `rgb(0,0,0)` or `rgb(0,0,0,0.5)`. Default is null = transparent
+debug			 | boolean | false				 | If `true` a pattern is drawn on the barcode to help identify the lines.
+padding    | int     | 0             | Adds a padding arround the code (in pixel)
 
 ###List of callbacks###
 

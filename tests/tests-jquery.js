@@ -1,3 +1,5 @@
+QUnit.module("callbacks");
+
 QUnit.test("no canvas element passed", function(assert) {
 	$(document).EAN13("5449000096241", {
     	onError: function(){
@@ -9,63 +11,6 @@ QUnit.test("no canvas element passed", function(assert) {
     });
 });
 
-QUnit.test("check generated line data", function(assert) {
-
-    var number = "5449000096241";
-    var code = "010001100111010010111000110100011010100111111001011101001010000110110010111001100110";
-
-	var object = $("#ean").EAN13(number,{
-		prefix: false,
-		debug: true,
-		onSuccess: function(){
-            var ctx = document.getElementById("ean").getContext("2d");
-            assert.equal(readNumber(ctx), "101" + code.substring(0,42) + "01010" + code.substring(42) + "101", "Code is readable");
-        },
-        onError: function(){
-        	assert.ok(false, "Something went wrong");
-        }
-	});
-    
-    if(object.data('plugin_EAN13').getCode() == code){
-    	assert.ok(true, "Generated code correct");
-    }
-    else{
-    	assert.ok(false, "Generated code incorrect");
-    }
-});
-
-QUnit.test("check number is only printed if requested", function(assert) {
-
-	var number = "5449000096241";
-
-    $("#ean").EAN13(number, {
-        number: false,
-        onSuccess: function(){
-           	var ctx = document.getElementById("ean").getContext("2d");
-
-            if(numberPrinted(ctx)){
-              ok(false,"Number printed also when off");
-            }
-            else{
-              ok(true,"Number not printed");
-            }
-        }
-    });
-});
-
-QUnit.test("check if success callback is fired", function(assert) {
-
-	var number = "5449000096241";
-
-    $("#ean").EAN13("5449000096241", {
-      	onSuccess: function(){
-	    	assert.ok(true, "onSuccess called");
-      	},
-      	onError: function(){
-      		assert.ok(false, "onError called");
-      	}
-    });
-});
 
 QUnit.test("checksum", function(assert) {
 
@@ -87,3 +32,148 @@ QUnit.test("checksum", function(assert) {
         }
     });
 });
+
+QUnit.test("check if success callback is fired", function(assert) {
+
+	var number = "5449000096241";
+
+    $("#ean").EAN13("5449000096241", {
+      	onSuccess: function(){
+	    	assert.ok(true, "onSuccess called");
+      	},
+      	onError: function(){
+      		assert.ok(false, "onError called");
+      	}
+    });
+});
+
+QUnit.module("options");
+
+QUnit.test("check number is only printed if requested", function(assert) {
+
+	var number = "5449000096241";
+
+    $("#ean").EAN13(number, {
+        number: false,
+        onSuccess: function(){
+           	var ctx = document.getElementById("ean").getContext("2d");
+
+            if(numberPrinted(ctx)){
+              ok(false,"Number printed also when off");
+            }
+            else{
+              ok(true,"Number not printed");
+            }
+        }
+    });
+});
+
+QUnit.module("encoding");
+
+QUnit.asyncTest("5901234123457", function(assert) {
+
+  var number = "5901234123457";
+  var canvas = document.getElementById("ean");
+
+  read(canvas, number, assert);
+});
+
+QUnit.asyncTest("9310779300005", function(assert) {
+
+  var number = "9310779300005";
+  var canvas = document.getElementById("ean");
+
+  read(canvas, number, assert);
+});
+
+QUnit.asyncTest("5060204120848", function(assert) {
+
+  var number = "5060204120848";
+  var canvas = document.getElementById("ean");
+
+  read(canvas, number, assert);
+});
+
+QUnit.asyncTest("3800065711135", function(assert) {
+
+  var number = "3800065711135";
+  var canvas = document.getElementById("ean");
+
+  read(canvas, number, assert);
+});
+
+QUnit.asyncTest("9421023610112", function(assert) {
+
+  var number = "9421023610112";
+  var canvas = document.getElementById("ean");
+
+  read(canvas, number, assert);
+});
+
+QUnit.asyncTest("1234567890128", function(assert) {
+
+  var number = "1234567890128";
+  var canvas = document.getElementById("ean");
+
+  read(canvas, number, assert);
+});
+
+QUnit.asyncTest("3401312345624", function(assert) {
+
+  var number = "3401312345624";
+  var canvas = document.getElementById("ean");
+
+  read(canvas, number, assert);
+});
+
+QUnit.asyncTest("5060204123733", function(assert) {
+
+  var number = "5060204123733";
+  var canvas = document.getElementById("ean");
+
+  read(canvas, number, assert);
+});
+
+QUnit.asyncTest("0012345123450", function(assert) {
+
+  var number = "0012345123450";
+  var canvas = document.getElementById("ean");
+
+  read(canvas, number, assert);
+});
+
+function read(canvas, number, assert){
+	$("#ean").EAN13(number, {
+    background: "#fff",
+    prefix: false,
+    number: false,
+    padding: 20,
+		onSuccess: function(){
+
+      var dataURL = canvas.toDataURL("image/jpeg");
+
+      Quagga.decodeSingle({
+        decoder: {
+          readers: ["ean_reader"]
+        },
+        locate: true,
+        src: dataURL,
+        locator: {
+          patchSize: "x-large"
+        }
+      },
+      function(result){
+				var code;
+        if(result.codeResult){
+          code = result.codeResult.code;
+        }
+        assert.equal(number, code, "Code reads back");
+        QUnit.start();
+      });
+    },
+    onError: function(){
+    	assert.ok(false, "Something went wrong");
+			QUnit.start();
+    }
+	});
+}

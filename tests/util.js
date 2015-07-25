@@ -26,3 +26,15 @@ function numberPrinted(ctx){
     }
     return true;
 }
+
+function randInt(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+// PhantomJS doesn't support bind yet
+Function.prototype.bind = Function.prototype.bind || function (thisp) {
+  var fn = this;
+  return function () {
+    return fn.apply(thisp, arguments);
+  };
+};
