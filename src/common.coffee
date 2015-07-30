@@ -7,6 +7,10 @@ class EAN13
 
   init: ->
 
+    # also disable prefix if no number should be drawn
+    if(!@settings.number)
+      @settings.prefix = false
+
     if @number.length == 12
       checkDigit = @generateCheckDigit(@number)
       @number+=checkDigit
