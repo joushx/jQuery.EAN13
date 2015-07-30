@@ -30,7 +30,9 @@
   "keywords": [
     "ean13",
     "barcode",
-    "jquery"
+    "jquery",
+    "jquery-plugin",
+    "ecosystem:jquery"
   ],
   "author": "Johannes Mittendorfer",
   "license": "MIT",
