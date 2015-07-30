@@ -13,6 +13,10 @@ do ($ = jQuery, window, document) ->
 
     init: ->
 
+      # also disable prefix if no number should be drawn
+      if(!@settings.number)
+        @settings.prefix = false
+
       if @number.length == 12
         checkDigit = @generateCheckDigit(@number)
         @number+=checkDigit
@@ -127,8 +131,6 @@ do ($ = jQuery, window, document) ->
 
       # calculate width of every element
       item_width = width / 95
-
-      console.log code[0].toString(2)
 
       # check if canvas-element is available
       if @element.getContext

@@ -2,8 +2,8 @@
 * Copyright (c) 2015 Johannes Mittendorfer (http://johannes-mittendorfer.com)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version 2.1.2
-* Build 2015-07-25
+* Version 2.2.0
+* Build 2015-07-30
 */
 
 (function($, window, document) {
@@ -15,6 +15,9 @@
 
     EAN13.prototype.init = function() {
       var checkDigit, code;
+      if (!this.settings.number) {
+        this.settings.prefix = false;
+      }
       if (this.number.length === 12) {
         checkDigit = this.generateCheckDigit(this.number);
         this.number += checkDigit;
@@ -90,7 +93,6 @@
         height = border_height;
       }
       item_width = width / 95;
-      console.log(code[0].toString(2));
       if (this.element.getContext) {
         context = this.element.getContext("2d");
         this.clear(context);
