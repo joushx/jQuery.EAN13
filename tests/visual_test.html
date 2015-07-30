@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8"/>
+    <script type="text/javascript" src="../dist/ean13.min.js"></script>
+    <style type="text/css">
+    td{
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      width: 320px;
+      height: 320px;
+      border: none;
+      font: normal 100%/normal Arial, Helvetica, sans-serif;
+      color: rgba(255,255,255,1);
+      -o-text-overflow: clip;
+      text-overflow: clip;
+      background: -webkit-linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), -webkit-linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), rgb(255, 255, 255);
+      background: -moz-linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), -moz-linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), rgb(255, 255, 255);
+      background: linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), linear-gradient(45deg, rgba(0,0,0,0.0980392) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.0980392) 75%, rgba(0,0,0,0.0980392) 0), rgb(255, 255, 255);
+      background-position: 0 0, 40px 40px;
+      -webkit-background-origin: padding-box;
+      background-origin: padding-box;
+      -webkit-background-clip: border-box;
+      background-clip: border-box;
+      -webkit-background-size: 80px 80px;
+      background-size: 80px 80px;
+    }
+    canvas{
+      border: 1px solid #ccc;
+    }
+    </style>
+  </head>
+  <body>
+
+    <table border="1">
+      <tr><th></th><th>normal</th><th>color</th><th>padding</th></tr>
+      <tr><th>normal</th><td><canvas id="normal-normal" width="400" height="200"></canvas></td><td><canvas id="normal-color" width="400" height="200"></canvas></td><td><canvas id="normal-padding" width="400" height="200"></canvas></td></tr>
+      <tr><th>no prefix</th><td><canvas id="noprefix-normal" width="400" height="200"></canvas></td><td><canvas id="noprefix-color" width="400" height="200"></canvas></td><td><canvas id="noprefix-padding" width="400" height="200"></canvas></td></tr>
+      <tr><th>no number</th><td><canvas id="nonumber-normal" width="400" height="200"></canvas></td><td><canvas id="nonumber-color" width="400" height="200"></canvas></td><td><canvas id="nonumber-padding" width="400" height="200"></canvas></td></tr>
+    </table>
+
+    <script type="text/javascript">
+      new EAN13(document.getElementById("normal-normal"),"5901234123457");
+      new EAN13(document.getElementById("normal-color"),"5901234123457", {color: "red", background: "white"});
+      new EAN13(document.getElementById("normal-padding"),"5901234123457", {padding: 20});
+
+      new EAN13(document.getElementById("noprefix-normal"),"5901234123457", {prefix: false});
+      new EAN13(document.getElementById("noprefix-color"),"5901234123457", {prefix: false, color: "red", background: "white"});
+      new EAN13(document.getElementById("noprefix-padding"),"5901234123457", {prefix: false, padding: 20});
+
+      new EAN13(document.getElementById("nonumber-normal"),"5901234123457", {number: false});
+      new EAN13(document.getElementById("nonumber-color"),"5901234123457", {number: false, color: "red", background: "white"});
+      new EAN13(document.getElementById("nonumber-padding"),"5901234123457", {number: false, padding: 20});
+    </script>
+  </body>
+</html>

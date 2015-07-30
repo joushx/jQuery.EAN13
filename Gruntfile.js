@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       }
     },
     qunit: {
-      all: ['tests/**/*.html']
+      all: ['tests/tests-js.html', 'tests/tests-jquery.html'],
     },
     jquerymanifest: {
         options: {
