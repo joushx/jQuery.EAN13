@@ -37,7 +37,7 @@ do ($ = jQuery, window, document) ->
         @draw(code)
 
       else
-        @settings.onError.call()
+        @settings.onError.call(this, "number length != 13")
 
     getCode: ->
 
@@ -261,7 +261,7 @@ do ($ = jQuery, window, document) ->
         @settings.onSuccess.call()
       else
         #call error callback
-        @settings.onError.call()
+        @settings.onError.call(this, "canvas context is null")
 
     generateCheckDigit:(number) ->
 

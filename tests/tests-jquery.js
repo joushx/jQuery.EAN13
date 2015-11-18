@@ -2,8 +2,9 @@ QUnit.module("callbacks");
 
 QUnit.test("no canvas element passed", function(assert) {
 	$(document).EAN13("5449000096241", {
-    	onError: function(){
+    	onError: function(desc){
         	assert.ok(true, "onError called");
+					assert.equal(desc, "canvas context is null");
         },
         onSuccess: function(){
         	assert.ok(false, "onSuccess called");

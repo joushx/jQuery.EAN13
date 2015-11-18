@@ -2,8 +2,8 @@
 * Copyright (c) 2015 Johannes Mittendorfer (http://johannes-mittendorfer.com)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version 2.2.0
-* Build 2015-07-30
+* Version 2.2.1
+* Build 2015-11-18
 */
 
 var EAN13, pluginName;
@@ -33,7 +33,7 @@ EAN13 = (function() {
       code = this.getCode();
       return this.draw(code);
     } else {
-      return this.settings.onError.call();
+      return this.settings.onError.call(this, "number length != 13");
     }
   };
 
@@ -170,7 +170,7 @@ EAN13 = (function() {
       }
       return this.settings.onSuccess.call();
     } else {
-      return this.settings.onError.call();
+      return this.settings.onError.call(this, "canvas context is null");
     }
   };
 

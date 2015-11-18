@@ -31,7 +31,7 @@ class EAN13
       @draw(code)
 
     else
-      @settings.onError.call()
+      @settings.onError.call(this, "number length != 13")
 
   getCode: ->
 
@@ -255,7 +255,7 @@ class EAN13
       @settings.onSuccess.call()
     else
       #call error callback
-      @settings.onError.call()
+      @settings.onError.call(this, "canvas context is null")
 
   generateCheckDigit:(number) ->
 
