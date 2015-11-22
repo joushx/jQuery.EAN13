@@ -13,7 +13,6 @@ class EAN13
 
     if @number.length == 12
       checkDigit = @generateCheckDigit(@number)
-      console.log(checkDigit)
       @number+=checkDigit
 
     # check if length of code matches specification
