@@ -15,6 +15,7 @@ class EAN13
 
     if @number.length == 12
       checkDigit = @generateCheckDigit(@number)
+      console.log(checkDigit)
       @number+=checkDigit
 
     # check if length of code matches specification
@@ -33,7 +34,7 @@ class EAN13
       @draw(code)
 
     else
-      @settings.onError.call(this, "number length != 13")
+      @settings.onError.call(this, "number length is not 12 or 13")
 
   getCode: ->
 
@@ -278,7 +279,7 @@ class EAN13
         # count up counter
         counter += 3 * parseInt(value, 10)
 
-    10-(counter%10) % 10
+    (10-(counter%10)) % 10
 
   validate: ->
     parseInt(@number.slice(-1),10) == @generateCheckDigit(@number.slice(0,-1))

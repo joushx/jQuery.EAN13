@@ -2,8 +2,8 @@
 * Copyright (c) 2015 Johannes Mittendorfer (http://johannes-mittendorfer.com)
 * Licensed under the MIT License (LICENSE.txt).
 *
-* Version 2.2.1
-* Build 2015-11-18
+* Version 2.2.2
+* Build 2015-11-22
 */
 
 var EAN13, pluginName;
@@ -22,6 +22,7 @@ EAN13 = (function() {
     }
     if (this.number.length === 12) {
       checkDigit = this.generateCheckDigit(this.number);
+      console.log(checkDigit);
       this.number += checkDigit;
     }
     if (this.number.length === 13) {
@@ -33,7 +34,7 @@ EAN13 = (function() {
       code = this.getCode();
       return this.draw(code);
     } else {
-      return this.settings.onError.call(this, "number length != 13");
+      return this.settings.onError.call(this, "number length is not 12 or 13");
     }
   };
 
@@ -186,7 +187,7 @@ EAN13 = (function() {
         counter += 3 * parseInt(value, 10);
       }
     }
-    return 10 - (counter % 10) % 10;
+    return (10 - (counter % 10)) % 10;
   };
 
   EAN13.prototype.validate = function() {
