@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Jquery.ean13 by joushx</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Jquery.ean13</h1>
+      <h2 class="project-tagline">A jQuery &amp; plain JavaScript library for generating EAN13-barcodes</h2>
+      <a href="https://github.com/joushx/jQuery.EAN13" class="btn">View on GitHub</a>
+      <a href="https://github.com/joushx/jQuery.EAN13/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/joushx/jQuery.EAN13/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="docs" class="anchor" href="#docs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Docs</h1>
+
+<p>jQuery.EAN13.js is a lightweight library available as plain JavaScript and as jQuery plugin for the generation of EAN-13 barcodes.</p>
+
+<p><img src="https://raw.github.com/joushx/jQuery.EAN13/master/barcode.png"></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="include-plugin" class="anchor" href="#include-plugin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Include Plugin</h3>
+
+<p>Insert the following code into the <code>head</code> section of you page:</p>
+
+<h4>
+<a id="javascript" class="anchor" href="#javascript" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JavaScript</h4>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>jquery-ean13.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<h4>
+<a id="jquery" class="anchor" href="#jquery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>jQuery</h4>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>ean13.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>Make sure to include this <strong>after</strong> the jQuery-library.</p>
+
+<h3>
+<a id="insert-canvas" class="anchor" href="#insert-canvas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Insert Canvas</h3>
+
+<p>At the place where you want to insert the barcode insert this code:</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">canvas</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>ean<span class="pl-pds">"</span></span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>200<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>100<span class="pl-pds">"</span></span>&gt;
+    Your browser does not support canvas-elements.
+&lt;/<span class="pl-ent">canvas</span>&gt;</pre></div>
+
+<p>You may change the dimensions of the element. The barcode will automatically be resized.</p>
+
+<h3>
+<a id="simple-barcode" class="anchor" href="#simple-barcode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple barcode</h3>
+
+<p>For printing the barcode without any further options use the following code.
+If you don't provide a check digit (just a 12 digit code) it will be generated for you on the fly.</p>
+
+<h4>
+<a id="javascript-1" class="anchor" href="#javascript-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JavaScript</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> element <span class="pl-k">=</span> <span class="pl-smi">document</span>.<span class="pl-c1">getElementById</span>(<span class="pl-s"><span class="pl-pds">"</span>ean<span class="pl-pds">"</span></span>);
+<span class="pl-k">new</span> <span class="pl-en">EAN13</span>(element, <span class="pl-s"><span class="pl-pds">"</span>9002236311036<span class="pl-pds">"</span></span>);</pre></div>
+
+<h4>
+<a id="jquery-1" class="anchor" href="#jquery-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>jQuery</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#ean<span class="pl-pds">"</span></span>).<span class="pl-en">EAN13</span>(<span class="pl-s"><span class="pl-pds">"</span>9002236311036<span class="pl-pds">"</span></span>);</pre></div>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h2>
+
+<p>The library provides some options and callback functions. To use them simply provide a option object as the second argument.</p>
+
+<h3>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3>
+
+<h4>
+<a id="javascript-2" class="anchor" href="#javascript-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JavaScript</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> options <span class="pl-k">=</span> {
+    number<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    prefix<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-en">onSuccess</span><span class="pl-k">:</span> <span class="pl-k">function</span>(){
+      <span class="pl-c1">alert</span>(<span class="pl-s"><span class="pl-pds">"</span>Heeeey!<span class="pl-pds">"</span></span>);
+    }
+}
+
+<span class="pl-k">new</span> <span class="pl-en">EAN13</span>(<span class="pl-smi">document</span>.<span class="pl-c1">getElementById</span>(<span class="pl-s"><span class="pl-pds">"</span>ean<span class="pl-pds">"</span></span>), <span class="pl-s"><span class="pl-pds">"</span>9002236311036<span class="pl-pds">"</span></span>, options);</pre></div>
+
+<h4>
+<a id="jquery-2" class="anchor" href="#jquery-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>jQuery</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#ean<span class="pl-pds">"</span></span>).<span class="pl-en">EAN13</span>(<span class="pl-s"><span class="pl-pds">"</span>9002236311036<span class="pl-pds">"</span></span>, {
+    number<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    prefix<span class="pl-k">:</span> <span class="pl-c1">false</span>
+});</pre></div>
+
+<h3>
+<a id="list-of-options" class="anchor" href="#list-of-options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List of options</h3>
+
+<table>
+<thead>
+<tr>
+<th>identifier</th>
+<th>type</th>
+<th>default value</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>number</td>
+<td>boolean</td>
+<td>true</td>
+<td>If <code>true</code> the number is printed underneath the barcode to be readable for humans.</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>boolean</td>
+<td>true</td>
+<td>If <code>true</code> the country prefix (to be precise the first digit of it) is printed at the left of the barcode.</td>
+</tr>
+<tr>
+<td>color</td>
+<td>string</td>
+<td>#000</td>
+<td>The color of the barcode. Accepts any CSS colors e.g. <code>#ff0000</code>, <code>green</code>, <code>rgb(0,0,0)</code> or <code>rgb(0,0,0,0.5)</code>.</td>
+</tr>
+<tr>
+<td>background</td>
+<td>string</td>
+<td>null</td>
+<td>The background color of the barcode. Accepts any CSS colors e.g. <code>#ff0000</code>, <code>green</code>, <code>rgb(0,0,0)</code> or <code>rgb(0,0,0,0.5)</code>. Default is null = transparent</td>
+</tr>
+<tr>
+<td>debug</td>
+<td>boolean</td>
+<td>false</td>
+<td>If <code>true</code> a pattern is drawn on the barcode to help identify the lines.</td>
+</tr>
+<tr>
+<td>padding</td>
+<td>int</td>
+<td>0</td>
+<td>Adds a padding arround the code (in pixel)</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="list-of-callbacks" class="anchor" href="#list-of-callbacks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List of callbacks</h3>
+
+<table>
+<thead>
+<tr>
+<th>identifier</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onValid</td>
+<td>Fired if the checksum of the provided code is correct. Not used if a 12 digit code is provided.</td>
+</tr>
+<tr>
+<td>onInvalid</td>
+<td>Fired is the checksum is not correct. Not used if a 12 digit code is provided.</td>
+</tr>
+<tr>
+<td>onSuccess</td>
+<td>Fired at the end of the painting process and if no errors occurred.</td>
+</tr>
+<tr>
+<td>onError</td>
+<td>Fired if the were any errors while painting. (For instance the canvas element is not present)</td>
+</tr>
+</tbody>
+</table>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/joushx/jQuery.EAN13">Jquery.ean13</a> is maintained by <a href="https://github.com/joushx">joushx</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
