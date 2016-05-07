@@ -7,3 +7,4 @@ branches:
   except:
     - gh-pages
 script: grunt test --verbose
+sudo: false
