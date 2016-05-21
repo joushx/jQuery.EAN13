@@ -48,6 +48,19 @@ QUnit.test("check if success callback is fired", function(assert) {
     });
 });
 
+QUnit.test("check if success callback is fired without check digit", function(assert) {
+
+    $("#ean").EAN13("544900009624", {
+      	onSuccess: function(number){
+	    	assert.ok(true, "onSuccess called");
+		assert.equal(number, "5449000096241", "Number is as expected");
+      	},
+      	onError: function(){
+      		assert.ok(false, "onError called");
+      	}
+    });
+});
+
 QUnit.module("encoding");
 
 QUnit.test("read back numbers", function(assert) {
