@@ -252,7 +252,7 @@ class EAN13
           context.fillStyle = 'red'
           context.fill()
 
-      @settings.onSuccess.call()
+      @settings.onSuccess.call(this, @number)
     else
       #call error callback
       @settings.onError.call(this, "canvas context is null")
