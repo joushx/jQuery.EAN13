@@ -46,6 +46,18 @@ QUnit.test("number is null", function(assert) {
     });
 });
 
+QUnit.test("number is not numeric", function(assert) {
+
+    $("#ean").EAN13("foo", {
+        onSuccess: function(){
+           ok(false, "onSuccess called");
+        },
+        onError: function(){
+           ok(true, "onError called");
+        }
+    });
+});
+
 QUnit.test("check if success callback is fired", function(assert) {
 
 	var number = "5449000096241";

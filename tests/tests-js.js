@@ -39,6 +39,18 @@ QUnit.test("number is null", function(assert) {
     });
 });
 
+QUnit.test("number is not numeric", function(assert) {
+
+    new EAN13(document.getElementById("ean"), "foo", {
+      	onSuccess: function(){
+	    	assert.ok(false, "onSuccess called");
+      	},
+      	onError: function(){
+      		assert.ok(true, "onError called");
+      	}
+    });
+});
+
 QUnit.test("checksum", function(assert) {
 
     new EAN13(document.getElementById("ean"), "4012345123456", {
