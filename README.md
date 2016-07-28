@@ -94,9 +94,9 @@ padding    | int     | 0             | Adds a padding arround the code (in pixel
 
 ###List of callbacks###
 
-identifier | description
------------|---------
-onValid		 | Fired if the checksum of the provided code is correct. Not used if a 12 digit code is provided.
-onInvalid  | Fired is the checksum is not correct. Not used if a 12 digit code is provided.
-onSuccess  | Fired at the end of the painting process and if no errors occurred.
-onError    | Fired if the were any errors while painting. (For instance the canvas element is not present)
+identifier         | description
+-------------------|---------
+onValid()		       | Fired if the checksum of the provided code is correct. Not used if a 12 digit code is provided.
+onInvalid()        | Fired is the checksum is not correct. Not used if a 12 digit code is provided.
+onSuccess(number)  | Fired at the end of the painting process and if no errors occurred. Gives the number (including generated or provided checksum) as parameter.
+onError()          | Fired if the were any errors while painting. (For instance the canvas element is not present)

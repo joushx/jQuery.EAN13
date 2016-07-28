@@ -1,6 +1,8 @@
 Constributions are always welcome!
 
-Just make sure to run the tests sucsessfully and build the project before creating a push request. Here is a short guide:
+Just make sure to run the tests successfully before creating a push request. Please select `develope` as the target branch.
+
+Here is a short guide for running tests:
 
 ##Install grunt-cli##
 
@@ -22,4 +24,4 @@ npm install
 grunt
 ```
 
-If no errors are reported everything is finde and you now may create a pull request!
+If no errors are reported everything is fine and you now may create a pull request!

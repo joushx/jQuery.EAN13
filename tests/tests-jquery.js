@@ -34,6 +34,30 @@ QUnit.test("checksum", function(assert) {
     });
 });
 
+QUnit.test("number is null", function(assert) {
+
+    $("#ean").EAN13(null, {
+        onSuccess: function(){
+           ok(false, "onSuccess called");
+        },
+        onError: function(){
+           ok(true, "onError called");
+        }
+    });
+});
+
+QUnit.test("number is not numeric", function(assert) {
+
+    $("#ean").EAN13("foo", {
+        onSuccess: function(){
+           ok(false, "onSuccess called");
+        },
+        onError: function(){
+           ok(true, "onError called");
+        }
+    });
+});
+
 QUnit.test("check if success callback is fired", function(assert) {
 
 	var number = "5449000096241";
@@ -41,6 +65,19 @@ QUnit.test("check if success callback is fired", function(assert) {
     $("#ean").EAN13("5449000096241", {
       	onSuccess: function(){
 	    	assert.ok(true, "onSuccess called");
+      	},
+      	onError: function(){
+      		assert.ok(false, "onError called");
+      	}
+    });
+});
+
+QUnit.test("check if success callback is fired without check digit", function(assert) {
+
+    $("#ean").EAN13("544900009624", {
+      	onSuccess: function(number){
+	    	assert.ok(true, "onSuccess called");
+		assert.equal(number, "5449000096241", "Number is as expected");
       	},
       	onError: function(){
       		assert.ok(false, "onError called");
