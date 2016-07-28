@@ -7,6 +7,10 @@ class EAN13
 
   init: ->
 
+    if(!@number)
+      @settings.onError.call(this, "Number cannot be null")
+      return
+
     # also disable prefix if no number should be drawn
     if(!@settings.number)
       @settings.prefix = false
