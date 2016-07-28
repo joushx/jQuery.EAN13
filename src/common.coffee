@@ -7,6 +7,14 @@ class EAN13
 
   init: ->
 
+    if(!@number)
+      @settings.onError.call(this, "Number cannot be null")
+      return
+
+    if(!@isNumeric(@number))
+      @settings.onError.call(this, "Number must be numeric")
+      return
+
     # also disable prefix if no number should be drawn
     if(!@settings.number)
       @settings.prefix = false
@@ -32,6 +40,9 @@ class EAN13
 
     else
       @settings.onError.call(this, "number length is not 12 or 13")
+
+  isNumeric: (input) ->
+    !isNaN(parseFloat(input)) and isFinite(input)
 
   getCode: ->
 
