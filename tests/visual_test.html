@@ -38,20 +38,25 @@
       <tr><th>normal</th><td><canvas id="normal-normal" width="400" height="200"></canvas></td><td><canvas id="normal-color" width="400" height="200"></canvas></td><td><canvas id="normal-padding" width="400" height="200"></canvas></td></tr>
       <tr><th>no prefix</th><td><canvas id="noprefix-normal" width="400" height="200"></canvas></td><td><canvas id="noprefix-color" width="400" height="200"></canvas></td><td><canvas id="noprefix-padding" width="400" height="200"></canvas></td></tr>
       <tr><th>no number</th><td><canvas id="nonumber-normal" width="400" height="200"></canvas></td><td><canvas id="nonumber-color" width="400" height="200"></canvas></td><td><canvas id="nonumber-padding" width="400" height="200"></canvas></td></tr>
+      <tr><th>different size</th><td><canvas id="size-normal" width="200" height="200"></canvas></td><td><canvas id="size-color" width="200" height="200"></canvas></td><td><canvas id="size-padding" width="200" height="200"></canvas></td></tr>
     </table>
 
     <script type="text/javascript">
       new EAN13(document.getElementById("normal-normal"),"5901234123457");
-      new EAN13(document.getElementById("normal-color"),"5901234123457", {color: "red", background: "white"});
+      new EAN13(document.getElementById("normal-color"),"5901234123457", {color: "red", background: "green"});
       new EAN13(document.getElementById("normal-padding"),"5901234123457", {padding: 20});
 
       new EAN13(document.getElementById("noprefix-normal"),"5901234123457", {prefix: false});
-      new EAN13(document.getElementById("noprefix-color"),"5901234123457", {prefix: false, color: "red", background: "white"});
+      new EAN13(document.getElementById("noprefix-color"),"5901234123457", {prefix: false, color: "red", background: "green"});
       new EAN13(document.getElementById("noprefix-padding"),"5901234123457", {prefix: false, padding: 20});
 
       new EAN13(document.getElementById("nonumber-normal"),"5901234123457", {number: false});
-      new EAN13(document.getElementById("nonumber-color"),"5901234123457", {number: false, color: "red", background: "white"});
+      new EAN13(document.getElementById("nonumber-color"),"5901234123457", {number: false, color: "red", background: "green"});
       new EAN13(document.getElementById("nonumber-padding"),"5901234123457", {number: false, padding: 20});
+
+      new EAN13(document.getElementById("size-normal"),"5901234123457");
+      new EAN13(document.getElementById("size-color"),"5901234123457", {color: "red", background: "green"});
+      new EAN13(document.getElementById("size-padding"),"5901234123457", {padding: 20});
     </script>
   </body>
 </html>
