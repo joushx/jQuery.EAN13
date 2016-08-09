@@ -34,9 +34,34 @@
     "jquery-plugin",
     "ecosystem:jquery"
   ],
-  "author": "Johannes Mittendorfer",
-  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joushx/jQuery.EAN13/issues"
+    "url": "https://github.com/joushx/jQuery.EAN13/issues",
+    "email": "support@johannes-mittendorfer.com"
+  },
+  "author": {
+    "name": "Johannes Mittendorfer",
+	  "email": "kontakt@johannes-mittendorfer.com",
+	  "url": "https://johannes-mittendorfer.com"
+  },
+  "main": "dist/ean13.js",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joushx/jQuery.EAN13.git"
+  },
+  "scripts": {
+    "test": "npm run lint && node-qunit-phantomjs tests/tests-jquery.html && node-qunit-phantomjs tests/tests-js.html",
+    "lint": "coffeelint src/ean13.coffee src/common.coffee src/jquery-ean13.coffee",
+    "build": "rm -rf dist && mkdir dist && cat src/common.coffee src/ean13.coffee > dist/ean13.coffee && cat src/common.coffee src/jquery-ean13.coffee > dist/jquery-ean13.coffee && coffee --compile --bare --no-header dist/ean13.coffee > dist/ean13.js && coffee --compile --bare --no-header dist/jquery-ean13.coffee > dist/jquery-ean13.js",
+    "minify": "uglifyjs dist/ean13.js -o dist/ean13.min.js && uglifyjs dist/jquery-ean13.js -o dist/jquery-ean13.min.js",
+    "prepublish": "npm run build && npm run minify"
+  },
+  "devDependencies": {
+    "node-qunit-phantomjs":"~1.4.0",
+    "coffeelint":"~1.15.7",
+    "coffee-script":"~1.10.0",
+    "uglify-js":"~2.7.0"
   }
 }
