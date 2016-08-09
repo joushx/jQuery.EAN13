@@ -119,7 +119,7 @@ class EAN13
 
       # the ratio of border and middle line height to
       # height of the barcode when the number is printed
-      border_line_height_number: 0.9
+      border_line_height_number: 0.95
 
       # the ratio of order and middle line height to
       # height of the barcode without number
@@ -128,6 +128,7 @@ class EAN13
       # the ratio of normal lines to the border and
       # middle lines
       line_height: 0.9
+
       font_size: 0.15
       font_y: 1.03
       text_offset: 2
