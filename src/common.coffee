@@ -320,8 +320,5 @@ class EAN13
       for option of options
         @settings[option] = options[option]
 
-    # set name
-    @_name = pluginName
-
     # call draw function
     @init()
