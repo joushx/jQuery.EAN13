@@ -1,6 +1,6 @@
 Constributions are always welcome!
 
-Just make sure to run the tests successfully before creating a push request. Please select `develope` as the target branch.
+Just make sure to run the tests successfully before creating a push request. Please select `develop` as the target branch.
 
 Here is a short guide for running tests:
 
