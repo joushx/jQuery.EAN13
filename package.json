@@ -1,7 +1,11 @@
 {
   "name": "jquery-ean13",
-  "version": "2.2.3",
-  "description": "A library for the generation of EAN13 barcodes",
+  "version": "2.2.5",
+  "description": "A JavaScript library for the generation of EAN13-barcodes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joushx/jQuery.EAN13.git"
+  },
   "keywords": [
     "ean13",
     "barcode",
@@ -13,6 +17,7 @@
     "url": "https://github.com/joushx/jQuery.EAN13/issues",
     "email": "support@johannes-mittendorfer.com"
   },
+  "license": "MIT",
   "author": {
     "name": "Johannes Mittendorfer",
 	  "email": "kontakt@johannes-mittendorfer.com",
