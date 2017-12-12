@@ -1,23 +1,23 @@
 [![Build Status](https://travis-ci.org/joushx/jQuery.EAN13.png?branch=master)](https://travis-ci.org/joushx/jQuery.EAN13) <a href="https://flattr.com/thing/2941746/joushxjQuery-EAN13-on-GitHub" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>
 
-#jQuery.EAN13.js
+# jQuery.EAN13.js
 jQuery.EAN13.js is a lightweight library available as plain JavaScript and as jQuery plugin for the generation of EAN-13 barcodes.
 
 <img src="https://raw.github.com/joushx/jQuery.EAN13/master/barcode.png"/>
 
-##Usage##
+## Usage
 
 ###Include Plugin###
 Insert the following code into the `head` section of you page:
 
-####JavaScript####
+#### JavaScript
 
 ```html
 <script type="text/javascript" src="jquery-ean13.min.js"></script>
 ```
 
 
-####jQuery####
+#### jQuery
 
 ```html
 <script type="text/javascript" src="ean13.min.js"></script>
@@ -25,7 +25,7 @@ Insert the following code into the `head` section of you page:
 
 Make sure to include this **after** the jQuery-library.
 
-###Insert Canvas###
+### Insert Canvas
 At the place where you want to insert the barcode insert this code:
 
 ```html
@@ -36,29 +36,29 @@ At the place where you want to insert the barcode insert this code:
 
 You may change the dimensions of the element. The barcode will automatically be resized.
 
-###Simple barcode###
+### Simple barcode
 For printing the barcode without any further options use the following code.
 If you don't provide a check digit (just a 12 digit code) it will be generated for you on the fly.
 
-####JavaScript####
+#### JavaScript
 
 ```javascript
 var element = document.getElementById("ean");
 new EAN13(element, "9002236311036");
 ```
 
-####jQuery####
+#### jQuery
 ```javascript
 $("#ean").EAN13("9002236311036");
 ```
 
-##Options##
+## Options
 
 The library provides some options and callback functions. To use them simply provide a option object as the second argument.
 
-###Example###
+### Example
 
-####JavaScript####
+#### JavaScript
 
 ```javascript
 var options = {
@@ -72,7 +72,7 @@ var options = {
 new EAN13(document.getElementById("ean"), "9002236311036", options);
 ```
 
-####jQuery####
+#### jQuery
 
 ```javascript
 $("#ean").EAN13("9002236311036", {
@@ -81,7 +81,7 @@ $("#ean").EAN13("9002236311036", {
 });
 ```
 
-###List of options###
+### List of options
 
 identifier | type    | default value | description
 -----------|---------|---------------|-------------
@@ -92,7 +92,7 @@ background | string  | null          | The background color of the barcode. Acce
 debug			 | boolean | false				 | If `true` a pattern is drawn on the barcode to help identify the lines.
 padding    | int     | 0             | Adds a padding arround the code (in pixel)
 
-###List of callbacks###
+### List of callbacks
 
 identifier         | description
 -------------------|---------
